@@ -45,7 +45,7 @@ fun HomeView (
                 onClick = {
                     /*TODO Add Navigation to add screen*/
                     navController.navigate(Screen.AddScreen.route)
-                    Toast.makeText(context, "Floating Action Button CLicked", Toast.LENGTH_LONG).show()
+//                    Toast.makeText(context, "Floating Action Button CLicked", Toast.LENGTH_LONG).show()
                 }) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = null)
 
@@ -58,11 +58,11 @@ fun HomeView (
                 .padding(it)
         ) {
             items(DummyApartments.apartments) { apartment ->
-                if (apartment.ownerId == 1) {
+//                if (apartment.ownerId == 1) {
                     ApartmentItem(apartment = apartment) {
                         // Handle item click here if needed
                     }
-                }
+//                }
             }
         }
     }

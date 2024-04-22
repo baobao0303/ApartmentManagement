@@ -1,133 +1,171 @@
 package com.luaga.apartmentapp.data
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "apartments-table")
 data class Apartment(
-    val apartmentNumber: String,
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0,
+
+    @ColumnInfo(name = "apartments-number")
+    val apartment_number: String,
+
+    @ColumnInfo(name = "apartments-floor")
     val floor: Int,
-    val ownerId: Int,
-    val numBedrooms: Int,
-    val numBathrooms: Int,
-    val areaSqft: Int,
+
+    @ColumnInfo(name = "apartments-owner_id")
+    val owner_id: Int,
+
+    @ColumnInfo(name = "apartments-num_bedrooms")
+    val num_bedrooms: Int,
+
+    @ColumnInfo(name = "apartments-num_bathrooms")
+    val num_bathrooms: Int,
+
+    @ColumnInfo(name = "apartments-area_sqft")
+    val area_sqft: Int,
+
+    @ColumnInfo(name = "apartments-rent")
     val rent: Int,
-    val internetFee: Int,
-    val garbageFee: Int,
+
+    @ColumnInfo(name = "apartments-internet_fee")
+    val internet_fee: Int,
+
+    @ColumnInfo(name = "apartments-garbage_fee")
+    val garbage_fee: Int,
+
+    @ColumnInfo(name = "apartments-status")
     val status: String,
-    val waterUsage: WaterUsage?,
-    val furniture: Furniture,
-    val services: List<Service>
+
+    @ColumnInfo(name = "apartments-water_usage_current")
+    val water_usage_current: Int?,
+
+    @ColumnInfo(name = "apartments-beds_quantity")
+    val beds_quantity: Int,
+
+    @ColumnInfo(name = "apartments-beds_damaged")
+    val beds_damaged: Int,
+
+    @ColumnInfo(name = "apartments-sofas_quantity")
+    val sofas_quantity: Int,
+
+    @ColumnInfo(name = "apartments-sofas_damaged")
+    val sofas_damaged: Int,
+
+    @ColumnInfo(name = "apartments-tables_quantity")
+    val tables_quantity: Int,
+
+    @ColumnInfo(name = "apartments-tables_damaged")
+    val tables_damaged: Int,
+
+    @ColumnInfo(name = "apartments-chairs_quantity")
+    val chairs_quantity: Int,
+
+    @ColumnInfo(name = "apartments-chairs_damaged")
+    val chairs_damaged: Int,
+
+    @ColumnInfo(name = "apartments-appliances_quantity")
+    val appliances_quantity: Int,
+
+    @ColumnInfo(name = "apartments-appliances_damaged")
+    val appliances_damaged: Int,
+
+    @ColumnInfo(name = "apartments-gym")
+    val gym: Boolean,
+
+    @ColumnInfo(name = "apartments-swimming_pool")
+    val swimming_pool: Boolean,
+
+    @ColumnInfo(name = "apartments-laundry")
+    val laundry: Boolean,
+
+    @ColumnInfo(name = "apartments-parking")
+    val parking: Boolean
 )
 
-data class WaterUsage(
-    val currentUsage: Int,
-    val maxUsage: Int
-)
-
-data class Furniture(
-    val beds: FurnitureItem,
-    val sofas: FurnitureItem,
-    val tables: FurnitureItem,
-    val chairs: FurnitureItem,
-    val appliances: Appliances
-)
-
-data class FurnitureItem(
-    val quantity: Int,
-    val damaged: Int
-)
-
-data class Appliances(
-    val quantity: Int,
-    val damaged: Int,
-    val items: List<String>
-)
-
-data class Service(
-    val name: String,
-    val description: String,
-    val status: String
-)
-
-data class Tenant(
-    val name: String,
-    val contact: String,
-    val phone: String,
-    val identityCardNumber: String,
-    val moveInDate: String,
-    val leaseExpiryDate: String
-)
 object DummyApartments {
     val apartments = listOf(
         Apartment(
-            apartmentNumber = "A101",
+            apartment_number = "A101",
             floor = 1,
-            ownerId = 1,
-            numBedrooms = 2,
-            numBathrooms = 1,
-            areaSqft = 1000,
+            owner_id = 1,
+            num_bedrooms = 2,
+            num_bathrooms = 1,
+            area_sqft = 1000,
             rent = 1500,
-            internetFee = 0,
-            garbageFee = 0,
+            internet_fee = 0,
+            garbage_fee = 0,
             status = "available",
-            waterUsage = null,
-            furniture = Furniture(
-                beds = FurnitureItem(2, 0),
-                sofas = FurnitureItem(1, 1),
-                tables = FurnitureItem(1, 0),
-                chairs = FurnitureItem(4, 0),
-                appliances = Appliances(3, 0, listOf("refrigerator", "microwave", "stove"))
-            ),
-            services = listOf(
-                Service("Swimming Pool", "Outdoor swimming pool open from 8am to 8pm.", "available"),
-                Service("Gym", "Fully equipped gym available 24/7.", "unavailable")
-            )
+            water_usage_current = null,
+            beds_quantity = 2,
+            beds_damaged = 0,
+            sofas_quantity = 1,
+            sofas_damaged = 1,
+            tables_quantity = 1,
+            tables_damaged = 0,
+            chairs_quantity = 4,
+            chairs_damaged = 0,
+            appliances_quantity = 3,
+            appliances_damaged = 0,
+            gym = false,
+            swimming_pool = false,
+            laundry = false,
+            parking = false
         ),
         Apartment(
-            apartmentNumber = "B202",
+            apartment_number = "B202",
             floor = 2,
-            ownerId = 1,
-            numBedrooms = 3,
-            numBathrooms = 2,
-            areaSqft = 1200,
+            owner_id = 1,
+            num_bedrooms = 3,
+            num_bathrooms = 2,
+            area_sqft = 1200,
             rent = 1800,
-            internetFee = 50,
-            garbageFee = 20,
+            internet_fee = 50,
+            garbage_fee = 20,
             status = "occupied",
-            waterUsage = WaterUsage(30, 50),
-            furniture = Furniture(
-                beds = FurnitureItem(3, 0),
-                sofas = FurnitureItem(1, 0),
-                tables = FurnitureItem(2, 0),
-                chairs = FurnitureItem(6, 0),
-                appliances = Appliances(4, 1, listOf("refrigerator", "microwave", "stove", "dishwasher"))
-            ),
-            services = listOf(
-                Service("Swimming Pool", "Outdoor swimming pool open from 8am to 8pm.", "available"),
-                Service("Gym", "Fully equipped gym available 24/7.", "unavailable"),
-                Service("Laundry", "Coin-operated laundry facilities available in the building.", "available"),
-                Service("Parking", "Reserved parking spot available for each apartment.", "available")
-            )
+            water_usage_current = null,
+            beds_quantity = 3,
+            beds_damaged = 0,
+            sofas_quantity = 1,
+            sofas_damaged = 0,
+            tables_quantity = 2,
+            tables_damaged = 0,
+            chairs_quantity = 6,
+            chairs_damaged = 0,
+            appliances_quantity = 4,
+            appliances_damaged = 1,
+            gym = false,
+            swimming_pool = true,
+            laundry = true,
+            parking = true
         ),
         Apartment(
-            apartmentNumber = "C303",
+            apartment_number = "C303",
             floor = 3,
-            ownerId = 2,
-            numBedrooms = 1,
-            numBathrooms = 1,
-            areaSqft = 800,
+            owner_id = 2,
+            num_bedrooms = 1,
+            num_bathrooms = 1,
+            area_sqft = 800,
             rent = 1200,
-            internetFee = 40,
-            garbageFee = 15,
+            internet_fee = 40,
+            garbage_fee = 15,
             status = "available",
-            waterUsage = null,
-            furniture = Furniture(
-                beds = FurnitureItem(1, 0),
-                sofas = FurnitureItem(1, 0),
-                tables = FurnitureItem(1, 0),
-                chairs = FurnitureItem(2, 0),
-                appliances = Appliances(2, 0, listOf("refrigerator", "microwave"))
-            ),
-            services = listOf(
-                Service("Swimming Pool", "Outdoor swimming pool open from 8am to 8pm.", "available"),
-                Service("Gym", "Fully equipped gym available 24/7.", "unavailable")
-            )
+            water_usage_current = null,
+            beds_quantity = 1,
+            beds_damaged = 0,
+            sofas_quantity = 1,
+            sofas_damaged = 0,
+            tables_quantity = 1,
+            tables_damaged = 0,
+            chairs_quantity = 2,
+            chairs_damaged = 0,
+            appliances_quantity = 2,
+            appliances_damaged = 0,
+            gym = false,
+            swimming_pool = true,
+            laundry = false,
+            parking = false
         )
     )
 }
