@@ -6,11 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.luaga.apartmentapp.View.HomeView
+import com.luaga.apartmentapp.navigation.Navigation
 import com.luaga.apartmentapp.ui.theme.ApartmentAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,7 +20,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    HomeView()
+                   Navigation()
                 }
             }
         }

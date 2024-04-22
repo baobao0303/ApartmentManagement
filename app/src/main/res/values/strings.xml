@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ApartmentApp</string>
+    <string name="update_apartment">Update Apartment</string>
+    <string name="add_apartment">Add Apartment</string>
 </resources>
