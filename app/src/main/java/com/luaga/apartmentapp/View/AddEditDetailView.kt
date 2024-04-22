@@ -17,6 +17,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -48,7 +49,87 @@ fun AddEditDetailView(
     }
     val scope = rememberCoroutineScope()
     val scaffoldState = rememberScaffoldState()
-
+    if (id != 0L){
+        val apartment = viewModel.getAApartmentById(id).collectAsState(initial = Apartment(
+            0L,
+            "",
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            "",
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            false,
+            false,
+            false,
+            false,
+        ))
+        viewModel.apartmentNumberState  = apartment.value.apartment_number
+        viewModel.floorState = apartment.value.floor
+        viewModel.ownerIdState = apartment.value.owner_id
+        viewModel.numBedroomsState = apartment.value.num_bedrooms
+        viewModel.numBathroomsState = apartment.value.num_bathrooms
+        viewModel.areaSqftState = apartment.value.area_sqft
+        viewModel.rentState = apartment.value.rent
+        viewModel.internetFeeState = apartment.value.internet_fee
+        viewModel.garbageFeeState = apartment.value.garbage_fee
+        viewModel.statusState = apartment.value.status
+        viewModel.waterUsageCurrentState =apartment.value.water_usage_current ?: 0
+        viewModel.bedsQuantityState = apartment.value.beds_quantity
+        viewModel.bedsDamagedState = apartment.value.beds_damaged
+        viewModel.sofasQuantityState = apartment.value.sofas_quantity
+        viewModel.sofasDamagedState = apartment.value.sofas_damaged
+        viewModel.tablesQuantityState = apartment.value.tables_quantity
+        viewModel.tablesDamagedState = apartment.value.tables_damaged
+        viewModel.chairsQuantityState = apartment.value.chairs_quantity
+        viewModel.chairsDamagedState = apartment.value.chairs_damaged
+        viewModel.appliancesQuantityState = apartment.value.appliances_quantity
+        viewModel.appliancesDamagedState = apartment.value.appliances_damaged
+        viewModel.gymState = apartment.value.gym
+        viewModel.swimmingPoolState = apartment.value.swimming_pool
+        viewModel.laundryState = apartment.value.laundry
+        viewModel.parkingState = apartment.value.parking
+    }else{
+        viewModel.apartmentNumberState = ""
+        viewModel.floorState = 0
+        viewModel.ownerIdState = 0
+        viewModel.numBedroomsState = 0
+        viewModel.numBathroomsState = 0
+        viewModel.areaSqftState = 0
+        viewModel.rentState = 0
+        viewModel.internetFeeState = 0
+        viewModel.garbageFeeState = 0
+        viewModel.statusState = ""
+        viewModel.waterUsageCurrentState = 0
+        viewModel.bedsQuantityState = 0
+        viewModel.bedsDamagedState = 0
+        viewModel.sofasQuantityState = 0
+        viewModel.sofasDamagedState = 0
+        viewModel.tablesQuantityState = 0
+        viewModel.tablesDamagedState = 0
+        viewModel.chairsQuantityState = 0
+        viewModel.chairsDamagedState = 0
+        viewModel.appliancesQuantityState = 0
+        viewModel.appliancesDamagedState = 0
+        viewModel.gymState = false
+        viewModel.swimmingPoolState = false
+        viewModel.laundryState = false
+        viewModel.parkingState = false
+    }
 
     //LocalContext.current thường được sử dụng để truy cập thông tin
     val context = LocalContext.current;
@@ -264,7 +345,36 @@ fun AddEditDetailView(
                         ){
                             if(id != 0L){
                                 // TODO UpdateApartment
-
+                                viewModel.updateApartment(
+                                    Apartment(
+                                        id = id,
+                                        apartment_number = viewModel.apartmentNumberState.trim(),
+                                        floor = viewModel.floorState,
+                                        owner_id = viewModel.ownerIdState,
+                                        num_bedrooms = viewModel.numBedroomsState,
+                                        num_bathrooms = viewModel.numBathroomsState,
+                                        area_sqft = viewModel.areaSqftState,
+                                        rent = viewModel.rentState,
+                                        internet_fee = viewModel.internetFeeState,
+                                        garbage_fee = viewModel.garbageFeeState,
+                                        status = viewModel.statusState.trim(),
+                                        water_usage_current = viewModel.waterUsageCurrentState,
+                                        beds_quantity = viewModel.bedsQuantityState,
+                                        beds_damaged = viewModel.bedsDamagedState,
+                                        sofas_quantity = viewModel.sofasQuantityState,
+                                        sofas_damaged = viewModel.sofasDamagedState,
+                                        tables_quantity = viewModel.tablesQuantityState,
+                                        tables_damaged = viewModel.tablesDamagedState,
+                                        chairs_quantity = viewModel.chairsQuantityState,
+                                        chairs_damaged = viewModel.chairsDamagedState,
+                                        appliances_quantity = viewModel.appliancesQuantityState,
+                                        appliances_damaged = viewModel.appliancesDamagedState,
+                                        gym = viewModel.gymState,
+                                        swimming_pool = viewModel.swimmingPoolState,
+                                        laundry = viewModel.laundryState,
+                                        parking = true //viewModel.parkingState
+                                    )
+                                )
                             }else{
                                 // TODO AddApartment
                                 viewModel.addApartment(

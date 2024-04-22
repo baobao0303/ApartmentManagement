@@ -12,6 +12,7 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -44,7 +45,7 @@ fun HomeView (
                 containerColor = Color.Black,
                 onClick = {
                     /*TODO Add Navigation to add screen*/
-                    navController.navigate(Screen.AddScreen.route)
+                    navController.navigate(Screen.AddScreen.route + "/0L")
 //                    Toast.makeText(context, "Floating Action Button CLicked", Toast.LENGTH_LONG).show()
                 }) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = null)
@@ -52,15 +53,21 @@ fun HomeView (
             }
         }
     ) {
+        val apartmentlist = viewModel.getAllApartments.collectAsState(initial = listOf())
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(it)
         ) {
-            items(DummyApartments.apartments) { apartment ->
+            items(
+                //DummyApartments.apartments
+                apartmentlist.value
+            ) { apartment ->
 //                if (apartment.ownerId == 1) {
                     ApartmentItem(apartment = apartment) {
                         // Handle item click here if needed
+                        val id = apartment.id
+                        navController.navigate(route = Screen.AddScreen.route + "/$id" )
                     }
 //                }
             }

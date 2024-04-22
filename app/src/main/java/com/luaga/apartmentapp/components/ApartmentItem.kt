@@ -33,13 +33,13 @@ fun ApartmentItem(apartment: Apartment, onClick: () -> Unit) {
             )
             Spacer(modifier = Modifier.height(8.dp))
 
-            Text(text = "Apartment Number: B202")
-            Text(text = "Floor: 2")
-            Text(text = "Number of Bedrooms: 3")
-            Text(text = "Number of Bathrooms: 2")
-            Text(text = "Area: 1200 sqft")
-            Text(text = "Rent: $1800/month")
-            Text(text = "Status: Occupied")
+            Text(text = "Apartment Number: ${apartment.apartment_number}")
+            Text(text = "Floor: ${apartment.floor}")
+            Text(text = "Number of Bedrooms: ${apartment.num_bedrooms}")
+            Text(text = "Number of Bathrooms: ${apartment.num_bathrooms}")
+            Text(text = "Area: ${apartment.area_sqft} sqft")
+            Text(text = "Rent: ${apartment.rent}/month")
+            Text(text = "Status: ${apartment.status}")
         }
     }
 
