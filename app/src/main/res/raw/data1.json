@@ -1,0 +1,133 @@
+{
+  "apartments": [
+    {
+      "apartment_number": "A101",
+      "floor": 1,
+      "owner_id": 1,
+      "num_bedrooms": 2,
+      "num_bathrooms": 1,
+      "area_sqft": 1000,
+      "rent": 1500,
+      "internet_fee": 0,
+      "garbage_fee": 0,
+      "status": "available",
+      "water_usage": null,
+      "furniture": {
+        "beds": {"quantity": 2, "damaged": 0},
+        "sofas": {"quantity": 1, "damaged": 1},
+        "tables": {"quantity": 1, "damaged": 0},
+        "chairs": {"quantity": 4, "damaged": 0},
+        "appliances": {
+          "quantity": 3,
+          "damaged": 0,
+          "items": ["refrigerator", "microwave", "stove"]
+        }
+      },
+      "services": [
+        {
+          "name": "Swimming Pool",
+          "description": "Outdoor swimming pool open from 8am to 8pm.",
+          "status": "available"
+        },
+        {
+          "name": "Gym",
+          "description": "Fully equipped gym available 24/7.",
+          "status": "unavailable"
+        }
+      ]
+    },
+    {
+      "apartment_number": "B202",
+      "floor": 2,
+      "owner_id": 1,
+      "num_bedrooms": 3,
+      "num_bathrooms": 2,
+      "area_sqft": 1200,
+      "rent": 1800,
+      "internet_fee": 50,
+      "garbage_fee": 20,
+      "status": "occupied",
+      "water_usage": {
+        "current_usage": 30,
+        "max_usage": 50
+      },
+      "furniture": {
+        "beds": {"quantity": 3, "damaged": 0},
+        "sofas": {"quantity": 1, "damaged": 0},
+        "tables": {"quantity": 2, "damaged": 0},
+        "chairs": {"quantity": 6, "damaged": 0},
+        "appliances": {
+          "quantity": 4,
+          "damaged": 1,
+          "items": ["refrigerator", "microwave", "stove", "dishwasher"]
+        }
+      },
+      "tenant": {
+        "name": "John Doe",
+        "contact": "john.doe@example.com",
+        "phone": "123-456-7890",
+        "identity_card_number": "ABC123456",
+        "move_in_date": "2023-05-15",
+        "lease_expiry_date": "2024-05-14"
+      },
+      "services": [
+        {
+          "name": "Swimming Pool",
+          "description": "Outdoor swimming pool open from 8am to 8pm.",
+          "status": "available"
+        },
+        {
+          "name": "Gym",
+          "description": "Fully equipped gym available 24/7.",
+          "status": "unavailable"
+        },
+        {
+          "name": "Laundry",
+          "description": "Coin-operated laundry facilities available in the building.",
+          "status": "available"
+        },
+        {
+          "name": "Parking",
+          "description": "Reserved parking spot available for each apartment.",
+          "status": "available"
+        }
+      ]
+    },
+    {
+      "apartment_number": "C303",
+      "floor": 3,
+      "owner_id": 2,
+      "num_bedrooms": 1,
+      "num_bathrooms": 1,
+      "area_sqft": 800,
+      "rent": 1200,
+      "internet_fee": 40,
+      "garbage_fee": 15,
+      "status": "available",
+      "water_usage": null,
+      "furniture": {
+        "beds": {"quantity": 1, "damaged": 0},
+        "sofas": {"quantity": 1, "damaged": 0},
+        "tables": {"quantity": 1, "damaged": 0},
+        "chairs": {"quantity": 2, "damaged": 0},
+        "appliances": {
+          "quantity": 2,
+          "damaged": 0,
+          "items": ["refrigerator", "microwave"]
+        }
+      },
+      "services": [
+        {
+          "name": "Swimming Pool",
+          "description": "Outdoor swimming pool open from 8am to 8pm.",
+          "status": "available"
+        },
+        {
+          "name": "Gym",
+          "description": "Fully equipped gym available 24/7.",
+          "status": "unavailable"
+        }
+      ]
+    }
+  ]
+}

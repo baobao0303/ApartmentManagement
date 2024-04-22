@@ -52,17 +52,18 @@ fun HomeView (
             }
         }
     ) {
-        LazyColumn(modifier = Modifier
-            .fillMaxSize()
-            .padding(it)) {
-            items(
-                DummyApartments.apartmentsList
-            ){
-                apartment -> ApartmentItem(apartment =apartment){
-
-            }
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(it)
+        ) {
+            items(DummyApartments.apartments) { apartment ->
+                if (apartment.ownerId == 1) {
+                    ApartmentItem(apartment = apartment) {
+                        // Handle item click here if needed
+                    }
+                }
             }
         }
-
     }
 }
