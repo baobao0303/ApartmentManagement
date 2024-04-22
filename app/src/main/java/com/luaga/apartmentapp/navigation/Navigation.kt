@@ -11,6 +11,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.luaga.apartmentapp.View.AddEditDetailView
 import com.luaga.apartmentapp.View.HomeView
+import com.luaga.apartmentapp.View.UserView
 
 @Composable
 fun Navigation(
@@ -23,6 +24,9 @@ fun Navigation(
     ) {
         composable(Screen.HomeScreen.route){
             HomeView(navController,viewModel)
+        }
+        composable(Screen.UserScreen.route){
+            UserView(navController,viewModel)
         }
         composable(Screen.AddScreen.route + "/{id}",
             arguments = listOf(
