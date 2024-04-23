@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
@@ -23,9 +24,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -160,16 +164,25 @@ fun AddEditDetailView(
                     .padding(16.dp)
             ) {
                 item {
-                    Spacer(modifier = Modifier.height(10.dp))
+                    Text(
+                        text = "Thông tin Căn hộ",
+                        color = Color.Black,
+                        style = TextStyle(
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.Bold,
+                            textAlign = TextAlign.Center
+                        ),
+                        modifier = Modifier.padding(vertical = 16.dp) // Thêm padding top và bottom
+                    )
                     ApartmentTextField(
-                        label = "Mã số căn hộ",
+                        label = "Số phòng của căn hộ trong toà nhà",
                         value = viewModel.apartmentNumberState,
                         onValueChanged = viewModel::onApartmentNumberChanged
                     )
                     Spacer(modifier = Modifier.height(10.dp))
 
                     ApartmentTextField(
-                        label = "Tầng mấy",
+                        label = "Căn hộ ở tầng bao nhiêu",
                         value = viewModel.floorState.toString(),
                         onValueChanged = { viewModel.onFloorChanged(it.toIntOrNull() ?: 0) }
                     )
@@ -190,14 +203,14 @@ fun AddEditDetailView(
                     Spacer(modifier = Modifier.height(10.dp))
 
                     ApartmentTextField(
-                        label = "Diện tích căn hộ",
+                        label = "Diện tích căn hộ (m^2)",
                         value = viewModel.areaSqftState.toString(),
                         onValueChanged = { viewModel.onAreaSqftChanged(it.toIntOrNull() ?: 0) }
                     )
                     Spacer(modifier = Modifier.height(10.dp))
 
                     ApartmentTextField(
-                        label = "Giá tiền thuê:",
+                        label = "Giá tiền thuê căn hộ",
                         value = viewModel.rentState.toString(),
                         onValueChanged = { viewModel.onRentChanged(it.toIntOrNull() ?: 0) }
                     )
@@ -217,18 +230,27 @@ fun AddEditDetailView(
                     )
                     Spacer(modifier = Modifier.height(10.dp))
                     ApartmentTextField(
-                        label = "Trạng thái",
+                        label = "Trạng thái cho thuê",
                         value = viewModel.statusState,
                         onValueChanged = viewModel::onStatusChanged
                     )
                     Spacer(modifier = Modifier.height(10.dp))
                     ApartmentTextField(
-                        label = "Sử dụng nước hiện tại",
+                        label = "Số khối nước hiện tại",
                         value = viewModel.waterUsageCurrentState.toString(),
                         onValueChanged = { viewModel.onWaterUsageCurrentChanged(it.toIntOrNull() ?: 0) }
                     )
                     Spacer(modifier = Modifier.height(10.dp))
-
+                    Text(
+                        text = "Nội thất",
+                        color = Color.Black,
+                        style = TextStyle(
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.Bold,
+                            textAlign = TextAlign.Center
+                        ),
+                        modifier = Modifier.padding(vertical = 16.dp) // Thêm padding top và bottom
+                    )
                     ApartmentTextField(
                         label = "Số lượng giường",
                         value = viewModel.bedsQuantityState.toString(),
@@ -299,7 +321,16 @@ fun AddEditDetailView(
                     )
                     Spacer(modifier = Modifier.height(10.dp))
 
-
+                    Text(
+                        text = "Dịch vụ cho căn hộ",
+                        color = Color.Black,
+                        style = TextStyle(
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.Bold,
+                            textAlign = TextAlign.Center
+                        ),
+                        modifier = Modifier.padding(vertical = 16.dp) // Thêm padding top và bottom
+                    )
                     Row(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
@@ -331,9 +362,22 @@ fun AddEditDetailView(
                         Text("Có dịch vụ giặt là")
                     }
                     Spacer(modifier = Modifier.height(10.dp))
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Checkbox(
+                            checked = viewModel.parkingState,
+                            onCheckedChange = viewModel::onParkingChanged
+                        )
+                        Text("Có phòng gym")
+                    }
 
-
-                    Button(onClick = {
+                    Button(
+                        modifier = Modifier
+                            .padding(vertical = 16.dp) // Thêm padding ở phía trên và dưới
+                            .fillMaxWidth() // Đảm bảo nút sử dụng toàn bộ chiều rộng của parent
+                            .align(Alignment.CenterHorizontally), // Căn giữa theo chiều ngang
+                        onClick = {
                         // Gọi hàm buildApartmentInfo() và lưu thông tin apartment vào biến apartmentInfo
                         val apartmentInfo = buildApartmentInfo(viewModel)
 

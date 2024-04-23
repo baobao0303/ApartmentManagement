@@ -25,9 +25,18 @@ fun Navigation(
         composable(Screen.HomeScreen.route){
             HomeView(navController,viewModel)
         }
-        composable(Screen.UserScreen.route){
-            UserView(navController,viewModel)
+        composable(
+            route = "${Screen.UserScreen.route}/{id}",
+            arguments = listOf(
+                navArgument("id") {
+                    type = NavType.LongType // Xác định kiểu dữ liệu của tham số là Long
+                }
+            )
+        ) { backStackEntry ->
+            val id = backStackEntry.arguments?.getLong("id") ?: 0L // Nhận giá trị ID từ đường dẫn, mặc định là 0 nếu không có
+            UserView(navController, viewModel, id)
         }
+
         composable(Screen.AddScreen.route + "/{id}",
             arguments = listOf(
                 navArgument("id"){
