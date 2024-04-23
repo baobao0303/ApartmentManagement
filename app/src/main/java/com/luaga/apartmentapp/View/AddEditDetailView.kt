@@ -338,7 +338,7 @@ fun AddEditDetailView(
                             checked = viewModel.gymState,
                             onCheckedChange = viewModel::onGymChanged
                         )
-                        Text("Có phòng gym")
+                        Text("Dịch vụ phòng gym")
                     }
                     Spacer(modifier = Modifier.height(10.dp))
                     Row(
@@ -348,7 +348,7 @@ fun AddEditDetailView(
                             checked = viewModel.swimmingPoolState,
                             onCheckedChange = viewModel::onSwimmingPoolChanged
                         )
-                        Text("Có bể bơi")
+                        Text("Dịch vụ bể bơi")
                     }
 
                     Spacer(modifier = Modifier.height(10.dp))
@@ -359,7 +359,7 @@ fun AddEditDetailView(
                             checked = viewModel.laundryState,
                             onCheckedChange = viewModel::onLaundryChanged
                         )
-                        Text("Có dịch vụ giặt là")
+                        Text("Dịch vụ giặt là")
                     }
                     Spacer(modifier = Modifier.height(10.dp))
                     Row(
@@ -369,7 +369,7 @@ fun AddEditDetailView(
                             checked = viewModel.parkingState,
                             onCheckedChange = viewModel::onParkingChanged
                         )
-                        Text("Có phòng gym")
+                        Text("Dịch phòng gym")
                     }
 
                     Button(
@@ -416,9 +416,10 @@ fun AddEditDetailView(
                                         gym = viewModel.gymState,
                                         swimming_pool = viewModel.swimmingPoolState,
                                         laundry = viewModel.laundryState,
-                                        parking = true //viewModel.parkingState
+                                        parking = viewModel.parkingState
                                     )
                                 )
+                                snackMessage.value = "Apartment has been Updated"
                             }else{
                                 // TODO AddApartment
                                 viewModel.addApartment(
@@ -447,7 +448,7 @@ fun AddEditDetailView(
                                         gym = viewModel.gymState,
                                         swimming_pool = viewModel.swimmingPoolState,
                                         laundry = viewModel.laundryState,
-                                        parking = true //viewModel.parkingState
+                                        parking = viewModel.parkingState
                                     )
                                 )
                                 snackMessage.value = "Apartment has been created"
