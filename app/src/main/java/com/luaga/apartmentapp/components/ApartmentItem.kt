@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
 import  androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -15,7 +16,11 @@ import androidx.compose.ui.unit.dp
 import com.luaga.apartmentapp.data.Apartment
 
 @Composable
-fun ApartmentItem(apartment: Apartment, onClick: () -> Unit) {
+fun ApartmentItem(
+    apartment: Apartment,
+    onClick: () -> Unit,
+    onUserButtonClick: () -> Unit
+) {
    Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -40,6 +45,14 @@ fun ApartmentItem(apartment: Apartment, onClick: () -> Unit) {
             Text(text = "Area: ${apartment.area_sqft} sqft")
             Text(text = "Rent: ${apartment.rent}/month")
             Text(text = "Status: ${apartment.status}")
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Button(
+                onClick = { onUserButtonClick() },
+                modifier = Modifier.align(alignment = androidx.compose.ui.Alignment.CenterHorizontally)
+            ) {
+                Text("Thông tin người thuê căn hộ")
+            }
         }
     }
 

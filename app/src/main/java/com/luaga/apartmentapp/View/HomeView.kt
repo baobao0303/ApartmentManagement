@@ -99,71 +99,42 @@ fun HomeView (
                 SwipeToDismiss(
                     state = dismissState,
                     background = {
-                        val deleteBackgroundColor by animateColorAsState(
-                            if (dismissState.dismissDirection == DismissDirection.StartToEnd) Color(0xFFB91646) else Color.Transparent
+                        val color by animateColorAsState(
+                            if(dismissState.dismissDirection
+                                == DismissDirection.EndToStart) Color.Red else Color.Transparent
+                            ,label = ""
                         )
-                        val addBackgroundColor by animateColorAsState(
-                            if (dismissState.dismissDirection == DismissDirection.EndToStart) Color(0xFF125B50) else Color.Transparent
-                        )
+                        val alignment = Alignment.CenterEnd
                         Box(
                             Modifier
                                 .fillMaxSize()
+                                .background(color)
                                 .padding(horizontal = 20.dp),
-                            contentAlignment = Alignment.CenterEnd
-                        ) {
-                            Box(
-                                Modifier
-                                    .fillMaxSize()
-                                    .background(deleteBackgroundColor),
-                                contentAlignment = Alignment.CenterEnd
-                            ) {
-                                Text(
-                                    text = "Delete",
-                                    color = Color.White, // Tô màu trắng cho văn bản
-                                    modifier = Modifier
-                                        .align(Alignment.CenterStart) // Căn chỉnh văn bản sang bên phải
-                                        .padding(start = 20.dp), // Thêm padding bên phải\
-                                    style = TextStyle(
-                                        fontSize = 20.sp, // Kích thước font
-                                        fontWeight = FontWeight.Bold // Bôi đậm
-                                    )
-                                )
-                            }
-                            Box(
-                                Modifier
-                                    .fillMaxSize()
-                                    .background(addBackgroundColor)
-                                    .padding(start = 60.dp), // Chuyển từ end sang start để di chuyển sang bên trái
-                                contentAlignment = Alignment.CenterStart // Chuyển từ end sang start để di chuyển sang bên trái
-                            ) {
-                                Text(
-                                    text = "Thông tin",
-                                    color = Color.White, // Tô màu trắng cho văn bản
-                                    modifier = Modifier
-                                        .align(Alignment.CenterEnd) // Căn chỉnh văn bản sang bên phải
-                                        .padding(end = 20.dp), // Thêm padding bên phải\
-                                    style = TextStyle(
-                                        fontSize = 20.sp, // Kích thước font
-                                        fontWeight = FontWeight.Bold // Bôi đậm
-                                    )
-                                )
-
-                            }
+                            contentAlignment = alignment
+                        ){
+                            androidx.compose.material.Icon(
+                                Icons.Default.Delete,
+                                contentDescription = "Delete Icon",
+                                tint = Color.White
+                            )
                         }
 
                     },
-                    directions = setOf(DismissDirection.StartToEnd, DismissDirection.EndToStart), // Thêm cả hai hướng
-                    dismissThresholds = { FractionalThreshold(1f) },
+                    directions = setOf(DismissDirection.EndToStart),
+                    dismissThresholds = {FractionalThreshold(1f)},
                     dismissContent = {
-                        ApartmentItem(apartment = apartment) {
-                            val id = apartment.id
-                            navController.navigate("${Screen.UserScreen.route}/$id")
-                        }
+                        ApartmentItem(apartment = apartment,
+                            onClick = {
+                                val id = apartment.id
+                                navController.navigate(Screen.AddScreen.route + "/$id")
+                            },
+                            onUserButtonClick = {
+                                val id = apartment.id
+                                navController.navigate("${Screen.UserScreen.route}/$id")
+                            }
+                        )
                     }
                 )
-
-
-
 
             }
         }
