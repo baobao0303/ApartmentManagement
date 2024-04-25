@@ -143,9 +143,7 @@ fun AddEditDetailView(
                 title = if(id != 0L) stringResource(id = R.string.update_apartment)
                 else stringResource(id = R.string.add_apartment),
                 onBackNavClicked = {
-                    // Provide a function to handle back navigation
-                    Toast.makeText(context, "Button CLicked", Toast.LENGTH_LONG).show()
-                    navController.navigateUp()
+                    navController.navigate("home_screen")
                 }
             )
         },
@@ -172,7 +170,7 @@ fun AddEditDetailView(
                             fontWeight = FontWeight.Bold,
                             textAlign = TextAlign.Center
                         ),
-                        modifier = Modifier.padding(vertical = 16.dp) // Thêm padding top và bottom
+                        modifier = Modifier.padding(vertical = 16.dp)
                     )
                     ApartmentTextField(
                         label = "Số phòng của căn hộ trong toà nhà",
@@ -249,7 +247,7 @@ fun AddEditDetailView(
                             fontWeight = FontWeight.Bold,
                             textAlign = TextAlign.Center
                         ),
-                        modifier = Modifier.padding(vertical = 16.dp) // Thêm padding top và bottom
+                        modifier = Modifier.padding(vertical = 16.dp)
                     )
                     ApartmentTextField(
                         label = "Số lượng giường",
@@ -329,7 +327,7 @@ fun AddEditDetailView(
                             fontWeight = FontWeight.Bold,
                             textAlign = TextAlign.Center
                         ),
-                        modifier = Modifier.padding(vertical = 16.dp) // Thêm padding top và bottom
+                        modifier = Modifier.padding(vertical = 16.dp)
                     )
                     Row(
                         verticalAlignment = Alignment.CenterVertically
@@ -359,7 +357,7 @@ fun AddEditDetailView(
                             checked = viewModel.laundryState,
                             onCheckedChange = viewModel::onLaundryChanged
                         )
-                        Text("Dịch vụ giặt là")
+                        Text("Dịch vụ giặt")
                     }
                     Spacer(modifier = Modifier.height(10.dp))
                     Row(
@@ -369,19 +367,17 @@ fun AddEditDetailView(
                             checked = viewModel.parkingState,
                             onCheckedChange = viewModel::onParkingChanged
                         )
-                        Text("Dịch phòng gym")
+                        Text("Dịch vụ đậu xe")
                     }
 
                     Button(
                         modifier = Modifier
-                            .padding(vertical = 16.dp) // Thêm padding ở phía trên và dưới
-                            .fillMaxWidth() // Đảm bảo nút sử dụng toàn bộ chiều rộng của parent
-                            .align(Alignment.CenterHorizontally), // Căn giữa theo chiều ngang
+                            .padding(vertical = 16.dp)
+                            .fillMaxWidth()
+                            .align(Alignment.CenterHorizontally),
                         onClick = {
-                        // Gọi hàm buildApartmentInfo() và lưu thông tin apartment vào biến apartmentInfo
                         val apartmentInfo = buildApartmentInfo(viewModel)
 
-                        // Log thông tin apartment
                         Log.d("ApartmentInfo", apartmentInfo)
                         if(
                             viewModel.apartmentNumberState.isNotEmpty() &&
@@ -419,7 +415,7 @@ fun AddEditDetailView(
                                         parking = viewModel.parkingState
                                     )
                                 )
-                                snackMessage.value = "Apartment has been Updated"
+                                snackMessage.value = "Căn hộ của bản đã được cập nhật"
                             }else{
                                 // TODO AddApartment
                                 viewModel.addApartment(
@@ -451,11 +447,10 @@ fun AddEditDetailView(
                                         parking = viewModel.parkingState
                                     )
                                 )
-                                snackMessage.value = "Apartment has been created"
+                                snackMessage.value = "Căn hộ đã được tạo"
                             }
 
                         }else{
-                            // Enter field for apartment to be created
                             snackMessage.value = "Enter fields to create a apartment"
                         }
                         scope.launch {
@@ -476,7 +471,6 @@ fun AddEditDetailView(
         }
     }
 }
-// Trong hàm buildApartmentInfo(), thêm đoạn code sau để log thông tin apartment
 private fun buildApartmentInfo(viewModel: ApartmentViewModel): String {
     val apartmentInfo = "apartment_number = ${viewModel.apartmentNumberState.trim()}, " +
             "floor = ${viewModel.floorState}, " +

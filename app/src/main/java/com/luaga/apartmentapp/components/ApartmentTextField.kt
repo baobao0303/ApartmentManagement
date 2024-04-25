@@ -7,10 +7,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.luaga.apartmentapp.R
-
 @Composable
 fun ApartmentTextField(
     label:String,
@@ -20,13 +22,20 @@ fun ApartmentTextField(
     OutlinedTextField(
         value = value,
         onValueChange = onValueChanged,
-        label = { Text(text = label, color = Color.Black) },
+        label = {
+            Text(
+                text = label,
+                style = TextStyle(
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Bold
+                ),
+                color = Color.Black
+            )
+        },
         modifier = Modifier.fillMaxWidth(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
         colors = androidx.compose.material.TextFieldDefaults.outlinedTextFieldColors(
-            // using predefined Color
             textColor = Color.Black,
-            // using our own colors in Res.Values.Color
             focusedBorderColor = colorResource(id = R.color.black),
             unfocusedBorderColor = colorResource(id = R.color.black),
             cursorColor = colorResource(id = R.color.black),
@@ -35,10 +44,3 @@ fun ApartmentTextField(
         )
     )
 }
-
-@Preview
-@Composable
-fun ApartmentTextFieldPreview(){
-    ApartmentTextField(label = "text", value = "text", onValueChanged = {})
-}
-

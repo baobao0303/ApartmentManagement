@@ -1,5 +1,6 @@
 package com.luaga.apartmentapp.navigation
 
+import LoginView
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
 import com.luaga.apartmentapp.viewmodel.ApartmentViewModel
@@ -20,10 +21,13 @@ fun Navigation(
 ){
     NavHost(
         navController = navController,
-        startDestination = Screen.HomeScreen.route
+        startDestination = Screen.LoginScreen.route
     ) {
         composable(Screen.HomeScreen.route){
             HomeView(navController,viewModel)
+        }
+        composable(Screen.LoginScreen.route){
+            LoginView(navController, viewModel)
         }
         composable(
             route = "${Screen.UserScreen.route}/{id}",

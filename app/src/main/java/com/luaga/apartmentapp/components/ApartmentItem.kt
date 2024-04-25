@@ -8,11 +8,13 @@ import androidx.compose.material.Button
 import  androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.luaga.apartmentapp.data.Apartment
 
 @Composable
@@ -33,18 +35,22 @@ fun ApartmentItem(
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = "Apartment Information",
-                style = TextStyle(fontWeight = FontWeight.Bold)
+                text = "Thông tin căn hộ",
+                style = TextStyle(
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 20.sp
+                ),
+                modifier = Modifier.align(Alignment.CenterHorizontally)
             )
             Spacer(modifier = Modifier.height(8.dp))
 
-            Text(text = "Apartment Number: ${apartment.apartment_number}")
-            Text(text = "Floor: ${apartment.floor}")
-            Text(text = "Number of Bedrooms: ${apartment.num_bedrooms}")
-            Text(text = "Number of Bathrooms: ${apartment.num_bathrooms}")
-            Text(text = "Area: ${apartment.area_sqft} sqft")
-            Text(text = "Rent: ${apartment.rent}/month")
-            Text(text = "Status: ${apartment.status}")
+            Text(text = "Số căn hộ: ${apartment.apartment_number}")
+            Text(text = "Tầng: ${apartment.floor}")
+            Text(text = "Số phòng ngủ: ${apartment.num_bedrooms}")
+            Text(text = "Số phòng tắm: ${apartment.num_bathrooms}")
+            Text(text = "Diện tích: ${apartment.area_sqft} sqft")
+            Text(text = "Giá thuê: ${apartment.rent}/tháng")
+            Text(text = "Tình trạng: ${apartment.status}")
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(

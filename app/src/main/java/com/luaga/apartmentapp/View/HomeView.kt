@@ -38,6 +38,8 @@ import androidx.navigation.NavController
 import com.luaga.apartmentapp.data.DummyApartments
 import com.luaga.apartmentapp.navigation.AppBar.AppBarView
 import com.luaga.apartmentapp.navigation.Screen
+import com.luaga.apartmentapp.ui.theme.Primary
+import com.luaga.apartmentapp.ui.theme.Second
 import com.luaga.apartmentapp.viewmodel.ApartmentViewModel
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -60,23 +62,21 @@ fun HomeView (
             FloatingActionButton(
                 modifier = Modifier.padding(all = 20.dp),
                 contentColor = Color.White,
-                containerColor = Color.Black,
+                containerColor = Primary,
                 onClick = {
-                    /*TODO Add Navigation to add screen*/
                     navController.navigate(Screen.AddScreen.route + "/0L")
-//                    Toast.makeText(context, "Floating Action Button CLicked", Toast.LENGTH_LONG).show()
                 }) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = null)
 
             }
-        }
+        },
     ) {
         val apartmentList = viewModel.getAllApartments.collectAsState(initial = listOf())
 
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(it)
+                .padding(it).background(Second)
         ) {
             items(
                 //DummyApartments.apartments
@@ -84,13 +84,9 @@ fun HomeView (
             ) { apartment ->
                 val dismissState = rememberDismissState(
                     confirmStateChange = {
-                        if (it == DismissValue.DismissedToEnd) {
+                        if (it == DismissValue.DismissedToStart) {
                             // Xóa căn hộ nếu vuốt từ phải sang trái
                             viewModel.deleteApartment(apartment)
-                        } else if (it == DismissValue.DismissedToStart) {
-                            // Tạo route mới nếu vuốt từ trái sang phải
-                            val id = apartment.id
-                            navController.navigate("${Screen.UserScreen.route}/$id")
                         }
                         true
                     }

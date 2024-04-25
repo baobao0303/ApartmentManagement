@@ -13,15 +13,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.luaga.apartmentapp.R
+import com.luaga.apartmentapp.ui.theme.Primary
+import com.luaga.apartmentapp.ui.theme.TextColors
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppBarView(
     title: String,
-    onBackNavClicked: () -> Unit
+    onBackNavClicked: () -> Unit,
 ){
     val navigationIcon: (@Composable () -> Unit)? = if (title != "Apartment management") {
         {
@@ -41,14 +47,15 @@ fun AppBarView(
         title = {
             Text(
                 text = title,
-                color = colorResource(id = R.color.white),
+                color = colorResource(id =  R.color.TextColors),
                 modifier = Modifier
                     .padding(start = 4.dp)
-                    .heightIn(max = 24.dp)
+                    .heightIn(max = 24.dp),
+                style = TextStyle(fontSize = 20.sp)
             )
         },
         elevation = 3.dp,
-        backgroundColor = colorResource(id = R.color.app_bar_color),
+        backgroundColor = colorResource(id = R.color.Primary),
         navigationIcon = navigationIcon
     )
 }

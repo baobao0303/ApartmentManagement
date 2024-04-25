@@ -9,80 +9,82 @@ data class Apartment(
     val id: Long = 0,
 
     @ColumnInfo(name = "apartments-number")
-    val apartment_number: String,
+    val apartment_number: String = "",
 
     @ColumnInfo(name = "apartments-floor")
-    val floor: Int,
+    val floor: Int = 0,
 
     @ColumnInfo(name = "apartments-owner_id")
-    val owner_id: Int,
+    val owner_id: Int = 0,
 
     @ColumnInfo(name = "apartments-num_bedrooms")
-    val num_bedrooms: Int,
+    val num_bedrooms: Int = 0,
 
     @ColumnInfo(name = "apartments-num_bathrooms")
-    val num_bathrooms: Int,
+    val num_bathrooms: Int = 0,
 
     @ColumnInfo(name = "apartments-area_sqft")
-    val area_sqft: Int,
+    val area_sqft: Int = 0,
 
     @ColumnInfo(name = "apartments-rent")
-    val rent: Int,
+    val rent: Int = 0,
 
     @ColumnInfo(name = "apartments-internet_fee")
-    val internet_fee: Int,
+    val internet_fee: Int = 0,
 
     @ColumnInfo(name = "apartments-garbage_fee")
-    val garbage_fee: Int,
+    val garbage_fee: Int = 0,
 
     @ColumnInfo(name = "apartments-status")
-    val status: String,
+    val status: String = "",
 
     @ColumnInfo(name = "apartments-water_usage_current")
     val water_usage_current: Int?,
 
     @ColumnInfo(name = "apartments-beds_quantity")
-    val beds_quantity: Int,
+    val beds_quantity: Int = 0,
 
     @ColumnInfo(name = "apartments-beds_damaged")
-    val beds_damaged: Int,
+    val beds_damaged: Int = 0,
 
     @ColumnInfo(name = "apartments-sofas_quantity")
-    val sofas_quantity: Int,
+    val sofas_quantity: Int = 0,
 
     @ColumnInfo(name = "apartments-sofas_damaged")
-    val sofas_damaged: Int,
+    val sofas_damaged: Int = 0,
 
     @ColumnInfo(name = "apartments-tables_quantity")
     val tables_quantity: Int,
 
     @ColumnInfo(name = "apartments-tables_damaged")
-    val tables_damaged: Int,
+    val tables_damaged: Int = 0,
 
     @ColumnInfo(name = "apartments-chairs_quantity")
-    val chairs_quantity: Int,
+    val chairs_quantity: Int = 0,
 
     @ColumnInfo(name = "apartments-chairs_damaged")
-    val chairs_damaged: Int,
+    val chairs_damaged: Int = 0,
 
     @ColumnInfo(name = "apartments-appliances_quantity")
-    val appliances_quantity: Int,
+    val appliances_quantity: Int = 0,
 
     @ColumnInfo(name = "apartments-appliances_damaged")
-    val appliances_damaged: Int,
+    val appliances_damaged: Int = 0,
 
     @ColumnInfo(name = "apartments-gym")
-    val gym: Boolean,
+    val gym: Boolean = false,
 
     @ColumnInfo(name = "apartments-swimming_pool")
-    val swimming_pool: Boolean,
+    val swimming_pool: Boolean = false,
 
     @ColumnInfo(name = "apartments-laundry")
-    val laundry: Boolean,
+    val laundry: Boolean = false,
 
     @ColumnInfo(name = "apartments-parking")
-    val parking: Boolean
-)
+    val parking: Boolean = false,
+
+    )
+
 
 object DummyApartments {
     val apartments = listOf(
