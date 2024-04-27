@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green_300"
+    android:background="@color/green_700"
     tools:context=".LoginActivity">
 
     <LinearLayout
@@ -30,7 +30,7 @@
             android:gravity="center"
             android:text="Login"
             android:textAllCaps="false"
-            android:textColor="@color/beige_700"
+            android:textColor="@color/green_700"
             android:textSize="48sp"
             android:textStyle="bold" />
 
@@ -55,8 +55,8 @@
                     android:hint="Email"
                     android:inputType="textEmailAddress"
                     android:paddingStart="50dp"
-                    android:textColor="@color/beige_700"
-                    android:textColorHint="@color/beige_700"
+                    android:textColor="@color/green_700"
+                    android:textColorHint="@color/green_700"
                     android:textCursorDrawable="@null" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -68,7 +68,7 @@
                 android:layout_marginTop="10dp"
                 app:boxStrokeColor="@color/green_700"
                 app:endIconMode="password_toggle"
-                app:hintTextColor="@color/beige_700"
+                app:hintTextColor="@color/green_700"
                 app:startIconDrawable="@drawable/password_input">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -78,12 +78,11 @@
                     android:inputType="textPassword"
                     android:paddingStart="50dp"
                     android:textAllCaps="false"
-                    android:textColor="@color/beige_700"
-                    android:textColorHint="@color/beige_700"
+                    android:textColor="@color/green_700"
+                    android:textColorHint="@color/green_700"
                     android:textCursorDrawable="@null" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
 
 
             <Button
@@ -136,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/account"
-                android:textColor="@color/beige_700"
+                android:textColor="@color/green_700"
                 android:textSize="16sp" />
 
             <TextView
