@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.luaga.apartmentmanagement" />
+                  <option name="mobileSdkAppId" value="1:640621454526:android:745df6333befb018c5aaef" />
+                  <option name="projectId" value="apartmentmanagement-981e8" />
+                  <option name="projectNumber" value="640621454526" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

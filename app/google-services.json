@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "640621454526",
+    "project_id": "apartmentmanagement-981e8",
+    "storage_bucket": "apartmentmanagement-981e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640621454526:android:745df6333befb018c5aaef",
+        "android_client_info": {
+          "package_name": "com.luaga.apartmentmanagement"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLDrGPNbrX4Xyjigb3YaIKGhdchuaUbEA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
