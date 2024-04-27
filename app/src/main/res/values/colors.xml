@@ -3,11 +3,15 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="gray_login">#f8f9fa</color>
 
     <color name="heading_color">#FF001524</color>
 
+    <color name="green_900">#12372A</color>
     <color name="green_700">#FF1A4D2E</color>
     <color name="green_500">#FF4F6F52</color>
+    <color name="green_300">#D3E4CD</color>
+
 
     <color name="beige_700">#FFE8DFCA</color>
     <color name="beige_500">#FFF5EFE6</color>
