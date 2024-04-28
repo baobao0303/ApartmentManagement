@@ -12,9 +12,12 @@
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="Back"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textSignUp"
@@ -49,7 +52,8 @@
             android:layout_height="wrap_content"
             app:boxStrokeColor="@color/green_700"
             app:hintTextColor="@color/green_700"
-            app:startIconDrawable="@drawable/user_input">
+            app:startIconDrawable="@drawable/user_input"
+            app:hintTextAppearance="@style/CustomTextInputLayoutHint">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextSignUpUsername"
@@ -62,7 +66,7 @@
                 android:paddingStart="50dp"
                 android:textColor="@color/green_700"
                 android:textColorHint="@color/green_700"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@color/green_900" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -81,11 +85,11 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:hint="Phone"
-                android:inputType="text"
+                android:inputType="phone"
                 android:paddingStart="50dp"
                 android:textColor="@color/green_700"
                 android:textColorHint="@color/green_700"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@color/green_900" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,7 +112,7 @@
                 android:paddingStart="50dp"
                 android:textColor="@color/green_700"
                 android:textColorHint="@color/green_700"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@color/green_900" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -134,7 +138,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/green_700"
                 android:textColorHint="@color/green_700"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@color/green_900" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -159,7 +163,7 @@
                 android:textAllCaps="false"
                 android:textColor="@color/green_700"
                 android:textColorHint="@color/green_700"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@color/green_900" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

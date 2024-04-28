@@ -60,7 +60,8 @@
                     android:inputType="textEmailAddress"
                     android:paddingStart="50dp"
                     android:textColor="@color/green_700"
-                    android:textColorHint="@color/green_700"
+                    android:textColorHint="@color/green_900"
+                    android:textColorLink="@color/green_900"
                     android:textCursorDrawable="@null" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -84,8 +85,9 @@
                     android:inputType="textPassword"
                     android:paddingStart="50dp"
                     android:textAllCaps="false"
-                    android:textColor="@color/green_700"
-                    android:textColorHint="@color/green_700"
+                    android:textColor="@color/green_900"
+                    android:textColorHint="@color/green_900"
+                    android:textColorLink="@color/green_900"
                     android:textCursorDrawable="@null" />
 
             </com.google.android.material.textfield.TextInputLayout>
