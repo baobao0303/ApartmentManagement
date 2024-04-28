@@ -7,11 +7,15 @@
     android:layout_height="match_parent"
     android:background="@color/green_300"
     tools:context=".SignupActivity">
+
     <Button
         android:id="@+id/buttonBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back" />
+        android:text="Back"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp" />
+
     <TextView
         android:id="@+id/textSignUp"
         android:layout_width="match_parent"
@@ -40,7 +44,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textSignUp">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/editTextSignUpUser"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="400dp"
             android:layout_height="wrap_content"
@@ -49,6 +52,7 @@
             app:startIconDrawable="@drawable/user_input">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextSignUpUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -63,7 +67,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/editTextSignUpPhone"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="400dp"
             android:layout_height="wrap_content"
@@ -72,11 +75,12 @@
             app:startIconDrawable="@drawable/baseline_phone_24">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextSignUpPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:hint="User name"
+                android:hint="Phone"
                 android:inputType="text"
                 android:paddingStart="50dp"
                 android:textColor="@color/green_700"
@@ -86,7 +90,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/editTextSignUpEmail"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="400dp"
             android:layout_height="wrap_content"
@@ -95,6 +98,7 @@
             app:startIconDrawable="@drawable/baseline_email_24">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextSignUpEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -110,7 +114,6 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/editTextSignUpPassword"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="399dp"
             android:layout_height="wrap_content"
@@ -120,6 +123,7 @@
             app:startIconDrawable="@drawable/password_input">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextSignUpPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -135,7 +139,6 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/editTextSignUpConfirmPassword"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="399dp"
             android:layout_height="wrap_content"
@@ -145,12 +148,13 @@
             app:startIconDrawable="@drawable/password_input">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextSignUpConfirmPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:hint="Confirm Password"
-                android:inputType="textVisiblePassword"
+                android:inputType="textPassword"
                 android:paddingStart="50dp"
                 android:textAllCaps="false"
                 android:textColor="@color/green_700"
@@ -164,10 +168,12 @@
             android:layout_width="357dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:checked="true"
             android:fontFamily="sans-serif-medium"
             android:text="I accept all items &amp; conditions"
             android:textSize="14sp"
-            android:textStyle="normal" />
+            android:textStyle="normal"
+            app:buttonTint="@color/design_default_color_on_secondary" />
 
         <Button
             android:id="@+id/buttonSignup"
