@@ -7,20 +7,19 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-class MainActivity : AppCompatActivity() {
+class SearchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_search)
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
-        bottomNavigationView.selectedItemId = R.id.bottom_home
+        bottomNavigationView.selectedItemId = R.id.bottom_search
         bottomNavigationView.setOnItemSelectedListener { item: MenuItem ->
             when (item.itemId) {
-                R.id.bottom_home -> return@setOnItemSelectedListener true
-                R.id.bottom_search -> {
+                R.id.bottom_home -> {
                     startActivity(
                         Intent(
                             applicationContext,
-                            SearchActivity::class.java
+                            MainActivity::class.java
                         )
                     )
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
@@ -28,6 +27,7 @@ class MainActivity : AppCompatActivity() {
                     return@setOnItemSelectedListener true
                 }
 
+                R.id.bottom_search -> return@setOnItemSelectedListener true
                 R.id.bottom_settings -> {
                     startActivity(
                         Intent(
