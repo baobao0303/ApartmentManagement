@@ -172,7 +172,7 @@
             android:layout_width="357dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:checked="true"
+            android:checked="false"
             android:fontFamily="sans-serif-medium"
             android:text="I accept all items &amp; conditions"
             android:textSize="14sp"

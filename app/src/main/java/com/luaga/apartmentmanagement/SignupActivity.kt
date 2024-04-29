@@ -1,19 +1,33 @@
 package com.luaga.apartmentmanagement
 
 import android.os.Bundle
+import android.util.Size
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.luaga.apartmentmanagement.databinding.ActivitySignupBinding
 
 
 class SignupActivity : AppCompatActivity() {
     lateinit var signupBinding: ActivitySignupBinding
     var buttonBack: Button? = null
+
+    //Authentication with Firebase
     val auth : FirebaseAuth = FirebaseAuth.getInstance()
+
+    //Database Realtime
+    val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+    //Database admin get infor user
+    val reference: DatabaseReference = database.reference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         signupBinding = ActivitySignupBinding.inflate(layoutInflater)
@@ -25,7 +39,7 @@ class SignupActivity : AppCompatActivity() {
             val email = signupBinding.editTextSignUpEmail.text.toString()
             val password = signupBinding.editTextSignUpPassword.text.toString()
             val confirmPassword = signupBinding.editTextSignUpConfirmPassword.text.toString()
-
+            val checked = signupBinding.checkBox
             if (!isValidEmail(email)) {
                 showInvalidEmailDialog()
             } else if(!isValidPassword(password)) {
@@ -33,8 +47,13 @@ class SignupActivity : AppCompatActivity() {
             } else if(password != confirmPassword){
                 showPasswordMismatchDialog()
             } else {
-                // Email format and passwords match, continue with sign-up process
-                signupWithFirebase(email,password)
+                if (checked.isChecked) {
+                    // Email format and passwords match, check for existing account
+                    checkExistingAccount(email, password)
+                } else {
+                    // Inform the user to check the checkbox
+                    showCheckboxNotCheckedDialog()
+                }
             }
         }
 
@@ -42,6 +61,17 @@ class SignupActivity : AppCompatActivity() {
             onBackPressed()
         }
     }
+    private fun showCheckboxNotCheckedDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Chưa Chọn Checkbox")
+        builder.setMessage("Vui lòng chọn checkbox để tiếp tục.")
+        builder.setPositiveButton("OK") { dialog, which ->
+            dialog.dismiss()
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
+
     private fun isValidEmail(email: String): Boolean {
         return email.contains("@") && email.count { it == '@' } == 1
     }
@@ -58,6 +88,35 @@ class SignupActivity : AppCompatActivity() {
         val dialog = builder.create()
         dialog.show()
     }
+    private fun checkExistingAccount(email: String, password: String) {
+        auth.fetchSignInMethodsForEmail(email).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val signInMethods = task.result?.signInMethods
+                if (signInMethods != null && signInMethods.isNotEmpty()) {
+                    // Email already exists, inform the user
+                    showExistingAccountDialog()
+                } else {
+                    // Email does not exist, continue with sign-up process
+                    signupWithFirebase(email, password)
+                }
+            } else {
+                // Error occurred while checking for existing account
+                Toast.makeText(applicationContext, task.exception?.localizedMessage, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+    private fun showExistingAccountDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Tài Khoản Đã Tồn Tại")
+        builder.setMessage("Một tài khoản đã tồn tại với địa chỉ email này. Vui lòng sử dụng một địa chỉ email khác.")
+        builder.setPositiveButton("OK") { dialog, which ->
+            dialog.dismiss()
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+
     fun signupWithFirebase(
         email: String,
         password: String
