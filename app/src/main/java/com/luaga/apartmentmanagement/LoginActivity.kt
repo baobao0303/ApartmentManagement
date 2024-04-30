@@ -33,7 +33,8 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
         loginBinding.textViewForgotPassword.setOnClickListener{
-
+            val intent = Intent(this, ForgotPasswordActivity::class.java)
+            startActivity(intent)
         }
     }
     fun signInUser (userEmail: String, userPassword: String){
