@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
                             SearchActivity::class.java
                         )
                     )
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                    
                     finish()
                     return@setOnItemSelectedListener true
                 }
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
                             SettingActivity::class.java
                         )
                     )
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                    
                     finish()
                     return@setOnItemSelectedListener true
                 }
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
                             ProfileActivity::class.java
                         )
                     )
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                    
                     finish()
                     return@setOnItemSelectedListener true
                 }

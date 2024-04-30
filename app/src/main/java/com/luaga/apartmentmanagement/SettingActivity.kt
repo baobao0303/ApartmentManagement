@@ -5,12 +5,23 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.luaga.apartmentmanagement.databinding.ActivitySettingBinding
 
 
 class SettingActivity : AppCompatActivity() {
+    lateinit var  settingBinding: ActivitySettingBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_setting)
+        settingBinding = ActivitySettingBinding.inflate(layoutInflater)
+        val view = settingBinding.root
+        setContentView(view)
+        settingBinding.buttonSignout.setOnClickListener{
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         bottomNavigationView.selectedItemId = R.id.bottom_settings
         bottomNavigationView.setOnItemSelectedListener { item: MenuItem ->
@@ -22,8 +33,7 @@ class SettingActivity : AppCompatActivity() {
                             MainActivity::class.java
                         )
                     )
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-                    finish()
+                                        finish()
                     return@setOnItemSelectedListener true
                 }
 
@@ -34,8 +44,7 @@ class SettingActivity : AppCompatActivity() {
                             SearchActivity::class.java
                         )
                     )
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-                    finish()
+                                        finish()
                     return@setOnItemSelectedListener true
                 }
 
@@ -47,8 +56,7 @@ class SettingActivity : AppCompatActivity() {
                             ProfileActivity::class.java
                         )
                     )
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-                    finish()
+                                        finish()
                     return@setOnItemSelectedListener true
                 }
             }
