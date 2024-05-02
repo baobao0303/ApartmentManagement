@@ -12,6 +12,11 @@
     <color name="green_500">#FF4F6F52</color>
     <color name="green_300">#D3E4CD</color>
 
+    <color name="red">#803D3B</color>
+    <color name="blue">#0E46A3</color>
+    <color name="green">#41B06E</color>
+
+
 
     <color name="beige_700">#FFE8DFCA</color>
     <color name="beige_500">#FFF5EFE6</color>

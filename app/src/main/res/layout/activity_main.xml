@@ -7,29 +7,84 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home"
-        android:textColor="@color/green_500"
-        android:layout_centerInParent="true"
-        android:textSize="36sp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="334dp"
+            android:layout_marginTop="560dp"
+            android:clickable="true"
+            app:srcCompat="@drawable/fab_icon"
+            android:contentDescription="TODO" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:background="@color/green_700">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="serif-monospace"
+            android:gravity="center"
+            android:text="Home"
+            android:textColor="@color/beige_500"
+            android:textSize="38sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/frameLayout"
+        android:orientation="vertical"
+        android:paddingBottom="80dp">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recylerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/apartments_item" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="30dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/bottom_background"
-        android:elevation="2dp"
-        app:itemIconSize="30dp"
-        app:itemIconTint="@color/beige_700"
-        app:itemRippleColor="@android:color/transparent"
-        app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/bottom_menu" />
+    android:id="@+id/bottomNavigation"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_marginEnd="20dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginBottom="30dp"
+    android:layout_marginTop="30dp"
+    android:background="@drawable/bottom_background"
+    android:elevation="2dp"
+    app:itemIconSize="30dp"
+    app:itemIconTint="@color/beige_700"
+    app:itemRippleColor="@android:color/transparent"
+    app:labelVisibilityMode="unlabeled"
+    app:menu="@menu/bottom_menu" />
 
 </RelativeLayout>
