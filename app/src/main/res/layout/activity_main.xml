@@ -13,30 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="320dp"
-        android:layout_marginTop="560dp"
+        android:layout_marginTop="520dp"
         android:clickable="true"
         android:contentDescription="TODO"
         app:srcCompat="@drawable/fab_icon" />
-
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
-        android:background="@color/green_700">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fontFamily="serif-monospace"
-            android:gravity="center"
-            android:text="Home"
-            android:textColor="@color/beige_500"
-            android:textSize="38sp"
-            android:textStyle="bold" />
-    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -20,9 +20,7 @@
         <activity
             android:name=".UpdateApartmentActivity"
             android:exported="false" />
-        <activity
-            android:name=".AddUserActivity"
-            android:exported="false" />
+
         <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false"

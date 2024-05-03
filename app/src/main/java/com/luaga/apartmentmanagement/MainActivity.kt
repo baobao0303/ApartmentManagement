@@ -1,9 +1,12 @@
 package com.luaga.apartmentmanagement
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -152,4 +155,33 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_delete_all,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.deleteAll){
+            showDialogMessage()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+    fun showDialogMessage(){
+        val dialogMessage = AlertDialog.Builder(this)
+        dialogMessage.setTitle("Xóa tất cả căn hộ")
+        dialogMessage.setMessage("Nếu bấm Có, tất cả các căn hộ sẽ bị xóa" + "Nếu bạn muốn xóa một căn hộ cụ thể, bạn có thể vuốt mục sang phải hoặc sang trái")
+        dialogMessage.setNegativeButton("Cancel", DialogInterface.OnClickListener{
+            dialogInterface, i -> dialogInterface.cancel()
+        })
+        dialogMessage.setPositiveButton("Yes", DialogInterface.OnClickListener{
+            dialogMessage, i ->
+                reference.removeValue().addOnCompleteListener{
+                    task -> if(task.isSuccessful){
+                                apartmentsAdapter.notifyDataSetChanged()
+                                Toast.makeText(applicationContext,"Tất cả căn hộ đã bị xóa", Toast.LENGTH_SHORT).show()
+                            }
+                }
+        })
+        dialogMessage.create().show()
+    }
 }
