@@ -2,4 +2,9 @@
     <string name="app_name">ApartmentManagement</string>
     <string name="account">Dont\'t you have an account yet? <font color="#5BBCFF"><b><u><i>Sign Up</i></u></b></font> </string>
     <string name="forget_password"><u>I forget my password</u></string>
+    <string name="addSwimmingService">Dịch vụ hồ bơi</string>
+    <string name="addParkingService">Dịch vụ giữ xe</string>
+    <string name="addGymService">Dịch vụ tập Gym</string>
+    <string name="addLaundryService">Dịch vụ giặt ủi</string>
+    <string name="save">Save</string>
 </resources>

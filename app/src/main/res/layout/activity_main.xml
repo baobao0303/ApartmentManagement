@@ -8,20 +8,15 @@
     tools:context=".MainActivity">
 
 
-    <FrameLayout
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="334dp"
-            android:layout_marginTop="560dp"
-            android:clickable="true"
-            app:srcCompat="@drawable/fab_icon"
-            android:contentDescription="TODO" />
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="560dp"
+        android:clickable="true"
+        android:contentDescription="TODO"
+        app:srcCompat="@drawable/fab_icon" />
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -85,6 +80,8 @@
     app:itemIconTint="@color/beige_700"
     app:itemRippleColor="@android:color/transparent"
     app:labelVisibilityMode="unlabeled"
-    app:menu="@menu/bottom_menu" />
+    app:menu="@menu/bottom_menu" >
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 </RelativeLayout>

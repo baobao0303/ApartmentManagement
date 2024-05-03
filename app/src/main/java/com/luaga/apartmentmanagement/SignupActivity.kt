@@ -7,14 +7,9 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-
 import com.luaga.apartmentmanagement.databinding.ActivitySignupBinding
 
 class SignupActivity : AppCompatActivity() {
@@ -22,7 +17,7 @@ class SignupActivity : AppCompatActivity() {
     var buttonBack: Button? = null
 
     // Authentication with Firebase
-    val auth : FirebaseAuth = FirebaseAuth.getInstance()
+    val auth: FirebaseAuth = FirebaseAuth.getInstance()
 
     // Database Realtime
     val database: FirebaseDatabase = FirebaseDatabase.getInstance()
@@ -47,9 +42,9 @@ class SignupActivity : AppCompatActivity() {
 
             if (!isValidEmail(email)) {
                 showInvalidEmailDialog()
-            } else if(!isValidPassword(password)) {
+            } else if (!isValidPassword(password)) {
                 showInvalidPasswordDialog()
-            } else if(password != confirmPassword){
+            } else if (password != confirmPassword) {
                 showPasswordMismatchDialog()
             } else {
                 if (checked.isChecked) {
@@ -106,21 +101,7 @@ class SignupActivity : AppCompatActivity() {
                     showExistingAccountDialog()
                 } else {
                     // Email does not exist, continue with sign-up process
-                    signupWithFirebase(email, password)
-                    val helperClass = HelperClass()
-                    helperClass.setUsername(username)
-                    helperClass.setPhone(phone)
-                    helperClass.setEmail(email)
-                    helperClass.setPassword(password)
-                    reference = database.getReference("user")
-                    reference.child(username).setValue(helperClass)
-                    // List Apartment
-                    reference = database.getReference("user").child(username).child("apartments")
-                    // Push the default apartments to Firebase under the user's node
-                    val defaultApartment1 = InforApartment("John Doe", "1234567890", "123 Main St", "john@example.com", 1000.0, 50.0, 75.0, 20.0, true, false, true)
-                    val defaultApartment2 = InforApartment("Jane Smith", "0987654321", "456 Elm St", "jane@example.com", 1200.0, 60.0, 80.0, 25.0, false, true, false)
-                    reference.push().setValue(defaultApartment1)
-                    reference.push().setValue(defaultApartment2)
+                    signupWithFirebase(email, password, username, phone)
                 }
             } else {
                 // Error occurred while checking for existing account
@@ -140,15 +121,24 @@ class SignupActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun signupWithFirebase(email: String, password: String) {
-        signupBinding.progressBarSignup.visibility = View.VISIBLE
-        signupBinding.buttonSignup.isClickable = false
+
+    //CURRENTUSERID
+    private fun signupWithFirebase(email: String, password: String, username: String, phone: String) {
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if (task.isSuccessful) {
+                val user = task.result?.user
+                val currentUserId = user?.uid
+                if (currentUserId != null) {
+                    val helperClass = HelperClass()
+                    helperClass.setUsername(username)
+                    helperClass.setPhone(phone)
+                    helperClass.setEmail(email)
+                    helperClass.setPassword(password)
+                    reference = database.getReference("users")
+                    reference.child(currentUserId).setValue(helperClass)
+                }
                 Toast.makeText(applicationContext, "Your account has been created", Toast.LENGTH_LONG).show()
                 finish()
-                signupBinding.progressBarSignup.visibility = View.INVISIBLE
-                signupBinding.buttonSignup.isClickable= true
             } else {
                 Toast.makeText(applicationContext, task.exception?.localizedMessage, Toast.LENGTH_SHORT).show()
             }
