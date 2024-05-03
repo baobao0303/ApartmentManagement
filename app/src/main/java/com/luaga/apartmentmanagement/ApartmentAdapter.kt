@@ -55,6 +55,14 @@ class ApartmentsAdapter(
             intent.putExtra("swimmingService",apartmentList[position].swimmingService)
             context.startActivity(intent)
         }
+        // Trình nghe sự kiện cho nút "Thông tin người thuê"
+        holder.adapterBinding.button.setOnClickListener {
+            val intent = Intent(context, UserInformationActivity::class.java)
+            intent.putExtra("apartmentNumber", apartmentList[position].apartmentNumber)
+            intent.putExtra("area", apartmentList[position].area)
+            intent.putExtra("floor", apartmentList[position].floor)
+            context.startActivity(intent)
+        }
     }
     fun getApartmentId(position: Int): String{
         return apartmentList[position].apartmentId
