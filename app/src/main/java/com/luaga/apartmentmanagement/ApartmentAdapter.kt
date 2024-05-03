@@ -56,5 +56,7 @@ class ApartmentsAdapter(
             context.startActivity(intent)
         }
     }
-
+    fun getApartmentId(position: Int): String{
+        return apartmentList[position].apartmentId
+    }
 }

@@ -3,8 +3,11 @@ package com.luaga.apartmentmanagement
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -93,6 +96,22 @@ class MainActivity : AppCompatActivity() {
             // Người dùng chưa đăng nhập
             println("User chưa đăng nhập.")
         }
+        ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                TODO("Not yet implemented")
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val id = apartmentsAdapter.getApartmentId(viewHolder.adapterPosition)
+                reference.child(id).removeValue()
+                Toast.makeText(applicationContext,"The user was deleted",Toast.LENGTH_SHORT).show()
+            }
+
+        }).attachToRecyclerView(mainBinding.recylerView)
         retrieveDataFromDatabase()
     }
     fun retrieveDataFromDatabase(){

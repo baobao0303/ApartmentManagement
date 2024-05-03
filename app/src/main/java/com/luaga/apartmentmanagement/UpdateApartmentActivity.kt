@@ -22,6 +22,9 @@ class UpdateApartmentActivity : AppCompatActivity() {
         updateApartmentBinding.buttonUpdateItem.setOnClickListener{
             updateData()
         }
+        updateApartmentBinding.buttonCancel.setOnClickListener {
+            finish()
+        }
     }
     fun getAndSetData(){
         val apartmentNumber = intent.getStringExtra("apartmentNumber")
