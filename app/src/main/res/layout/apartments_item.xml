@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
     android:layout_margin="10dp"
     android:background="@color/green_500"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
 
     <TextView
         android:id="@+id/apartmentNumber"
@@ -228,19 +229,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <!-- First Row -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
 
                 <FrameLayout
-                    android:id="@+id/gymService"
                     android:layout_width="0dp"
-                    android:layout_height="65dp"
+                    android:layout_height="80dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:background="@color/green_900">
@@ -262,34 +264,36 @@
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
+
+
                         <FrameLayout
-                            android:layout_width="120dp"
-                            android:layout_height="20dp"
+                            android:layout_width="140dp"
+                            android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="3dp"
                             android:background="@drawable/rounded_background">
-
-                            <TextView
-                                android:id="@+id/textActivityGymService"
+                            <Switch
+                                android:id="@+id/gymService"
+                                android:layout_marginLeft="5dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center_horizontal"
                                 android:text="Đang sử dụng"
-                                android:textColor="@color/beige_500" />
+                                android:textColor="@color/beige_500"
+                                android:gravity="center_vertical"/>
                         </FrameLayout>
                     </LinearLayout>
                 </FrameLayout>
 
                 <FrameLayout
-                    android:id="@+id/laundryService"
+
                     android:layout_width="0dp"
-                    android:layout_height="65dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/green_900">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="72dp"
                         android:orientation="vertical">
 
                         <TextView
@@ -304,19 +308,20 @@
                             android:textStyle="bold" />
 
                         <FrameLayout
-                            android:layout_width="120dp"
-                            android:layout_height="20dp"
+                            android:layout_width="140dp"
+                            android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="3dp"
                             android:background="@drawable/rounded_background">
 
-                            <TextView
-                                android:id="@+id/textActivityLaundryService"
+                            <Switch
+                                android:id="@+id/laundryService"
+                                android:layout_marginLeft="5dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center_horizontal"
                                 android:text="Đang sử dụng"
-                                android:textColor="@color/beige_500" />
+                                android:textColor="@color/beige_500"
+                                android:gravity="center_vertical"/>
                         </FrameLayout>
                     </LinearLayout>
                 </FrameLayout>
@@ -331,9 +336,8 @@
                 android:orientation="horizontal">
 
                 <FrameLayout
-                    android:id="@+id/parkingService"
                     android:layout_width="0dp"
-                    android:layout_height="65dp"
+                    android:layout_height="72dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
                     android:layout_weight="1"
@@ -356,27 +360,28 @@
                             android:textStyle="bold" />
 
                         <FrameLayout
-                            android:layout_width="120dp"
-                            android:layout_height="20dp"
+                            android:layout_width="140dp"
+                            android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="3dp"
                             android:background="@drawable/rounded_background">
 
-                            <TextView
-                                android:id="@+id/textActivityParkingService"
+                            <Switch
+                                android:id="@+id/parkingService"
+                                android:layout_marginLeft="5dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center_horizontal"
                                 android:text="Đang sử dụng"
-                                android:textColor="@color/beige_500" />
+                                android:textColor="@color/beige_500"
+                                android:gravity="center_vertical"/>
                         </FrameLayout>
                     </LinearLayout>
                 </FrameLayout>
 
                 <FrameLayout
-                    android:id="@+id/swimmingService"
+
                     android:layout_width="0dp"
-                    android:layout_height="65dp"
+                    android:layout_height="72dp"
                     android:layout_weight="1"
                     android:background="@color/green_900">
 
@@ -397,19 +402,20 @@
                             android:textStyle="bold" />
 
                         <FrameLayout
-                            android:layout_width="120dp"
-                            android:layout_height="20dp"
+                            android:layout_width="140dp"
+                            android:layout_height="30dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="3dp"
                             android:background="@drawable/rounded_background">
 
-                            <TextView
-                                android:id="@+id/textActivitySwimmingService"
+                            <Switch
+                                android:id="@+id/swimmingService"
+                                android:layout_marginLeft="5dp"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:gravity="center_horizontal"
                                 android:text="Đang sử dụng"
-                                android:textColor="@color/beige_500" />
+                                android:textColor="@color/beige_500"
+                                android:gravity="center_vertical"/>
                         </FrameLayout>
                     </LinearLayout>
                 </FrameLayout>
