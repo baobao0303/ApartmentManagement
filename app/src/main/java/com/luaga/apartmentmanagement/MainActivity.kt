@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
     }
     fun retrieveDataFromDatabase(){
         // ChildEventListener
-        reference.addListenerForSingleValueEvent(object : ValueEventListener{
+        reference.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 apartmentList.clear()
                 for(eachApartment in snapshot.children){
