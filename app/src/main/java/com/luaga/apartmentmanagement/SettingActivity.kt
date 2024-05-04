@@ -62,5 +62,6 @@ class SettingActivity : AppCompatActivity() {
             }
             false
         }
+        supportActionBar?.title = "Setting"
     }
 }

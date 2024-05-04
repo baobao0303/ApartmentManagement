@@ -54,5 +54,6 @@ class SearchActivity : AppCompatActivity() {
             }
             false
         }
+        supportActionBar?.title = "Search"
     }
 }

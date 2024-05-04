@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -42,8 +43,19 @@ class AddApartmentActivity : AppCompatActivity() {
         //  Regiter
         registerActivityForResult()
         addApartmentBinding.buttonAddItem.setOnClickListener {
-            uploadPhoto()
+            if (imageUri == null) { // Kiểm tra xem người dùng đã chọn hình ảnh hay chưa
+                // Hiển thị hộp thoại cảnh báo nếu không có hình ảnh
+                AlertDialog.Builder(this)
+                    .setTitle("Lỗi")
+                    .setMessage("Vui lòng chọn hình ảnh trước khi lưu.")
+                    .setPositiveButton("OK", null)
+                    .show()
+            } else {
+                // Ngược lại, nếu đã chọn hình ảnh, tiếp tục với quá trình lưu
+                uploadPhoto()
+            }
         }
+
 
         addApartmentBinding.buttonCancel.setOnClickListener {
             finish()

@@ -89,6 +89,8 @@ class MainActivity : AppCompatActivity() {
             false
         }
 
+        supportActionBar?.title = "Home"
+
         mainBinding.floatingActionButton.setOnClickListener {
             val intent = Intent(this, AddApartmentActivity::class.java)
             startActivity(intent)
