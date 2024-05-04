@@ -80,6 +80,17 @@ class ApartmentsAdapter(
             intent.putExtra("apartmentNumber", apartmentList[position].apartmentNumber)
             intent.putExtra("area", apartmentList[position].area)
             intent.putExtra("floor", apartmentList[position].floor)
+            intent.putExtra("numberBedrooms",apartmentList[position].numBedrooms)
+            intent.putExtra("numberBathrooms",apartmentList[position].numBathrooms)
+            intent.putExtra("price",apartmentList[position].price)
+            intent.putExtra("priceInternet",apartmentList[position].priceInternet)
+            intent.putExtra("priceGarbage",apartmentList[position].priceGarbage)
+            intent.putExtra("gymService",apartmentList[position].gymService)
+            intent.putExtra("laundryService",apartmentList[position].laundryService)
+            intent.putExtra("parkingService",apartmentList[position].parkingService)
+            intent.putExtra("swimmingService",apartmentList[position].swimmingService)
+            intent.putExtra("imageUrl",imagUrl)
+            intent.putExtra("imageName",apartmentList[position].imageName)
             context.startActivity(intent)
         }
     }

@@ -8,4 +8,9 @@
     <string name="addLaundryService">Dịch vụ giặt ủi</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
+    <string name="phone">Phone</string>
+    <string name="address">Địa chỉ nhà</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="buttonRenter">Chỉnh sửa thông tin người thuê</string>
 </resources>
