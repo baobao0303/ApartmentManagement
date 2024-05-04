@@ -31,7 +31,8 @@
             android:theme="@style/AppThemeSplash" />
         <activity
             android:name=".UpdateApartmentActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppThemeSplash"/>
         <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false"

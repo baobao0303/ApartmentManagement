@@ -14,7 +14,8 @@ data class Apartments(
     val laundryService: Boolean= false,
     val parkingService: Boolean= false,
     val swimmingService: Boolean= false,
-    val url: String = ""
+    val url: String = "",
+    val imageName: String =""
 ) {
 
 }

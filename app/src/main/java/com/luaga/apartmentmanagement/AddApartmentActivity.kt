@@ -101,7 +101,7 @@ class AddApartmentActivity : AppCompatActivity() {
     }
 
 
-    private fun addApartmentToDatabase(url: String) {
+    private fun addApartmentToDatabase(url: String, imageName: String) {
         val apartmentNumber: String = addApartmentBinding.addApartmentNumber.text.toString()
         val floor: Int = addApartmentBinding.addFloor.text.toString().toInt()
         val area: Double = addApartmentBinding.addArea.text.toString().toDouble()
@@ -128,7 +128,7 @@ class AddApartmentActivity : AppCompatActivity() {
         val apartment = Apartments(
             id, apartmentNumber, floor, area, price, priceGarbage, priceInternet,
             numBedrooms, numBathrooms, gymService, laundryService, parkingService, swimmingService,
-            url
+            url, imageName
         )
         reference.child(id).setValue(apartment).addOnCompleteListener { task ->
             if (task.isSuccessful){
@@ -155,7 +155,7 @@ class AddApartmentActivity : AppCompatActivity() {
 
                 myUploadImageReference.downloadUrl.addOnSuccessListener { url ->
                     val imageURL = url.toString()
-                    addApartmentToDatabase(imageURL)
+                    addApartmentToDatabase(imageURL,imageName)
                 }
             }.addOnFailureListener {
             Toast.makeText(applicationContext,it.localizedMessage, Toast.LENGTH_SHORT).show()

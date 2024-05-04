@@ -31,7 +31,7 @@ class ApartmentsAdapter(
     }
 
     override fun onBindViewHolder(holder: ApartmentsViewHolder, position: Int) {
-        holder.adapterBinding.apartmentNumber.text = "Phòng: ${apartmentList[position].apartmentNumber}"
+        holder.adapterBinding.apartmentNumber.text = "Căn hộ: ${apartmentList[position].apartmentNumber}"
 //        holder.adapterBinding.area.text = apartmentList[position].area.toString()
 //        holder.adapterBinding.floor.text = apartmentList[position].floor.toString()
 //        holder.adapterBinding.numberBedrooms.text = apartmentList[position].numBedrooms.toString()
@@ -70,6 +70,8 @@ class ApartmentsAdapter(
             intent.putExtra("laundryService",apartmentList[position].laundryService)
             intent.putExtra("parkingService",apartmentList[position].parkingService)
             intent.putExtra("swimmingService",apartmentList[position].swimmingService)
+            intent.putExtra("imageUrl",imagUrl)
+            intent.putExtra("imageName",apartmentList[position].imageName)
             context.startActivity(intent)
         }
         // Trình nghe sự kiện cho nút "Thông tin người thuê"
@@ -83,5 +85,8 @@ class ApartmentsAdapter(
     }
     fun getApartmentId(position: Int): String{
         return apartmentList[position].apartmentId
+    }
+    fun getImageName(position: Int): String {
+        return apartmentList[position].imageName
     }
 }

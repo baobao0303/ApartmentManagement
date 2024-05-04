@@ -1,5 +1,6 @@
 package com.luaga.apartmentmanagement
 
+import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -18,6 +19,8 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import com.luaga.apartmentmanagement.data.Apartments
 import com.luaga.apartmentmanagement.databinding.ActivityMainBinding
 
@@ -27,6 +30,11 @@ class MainActivity : AppCompatActivity() {
     lateinit var reference: DatabaseReference // Khai báo DatabaseReference
     val apartmentList =ArrayList<Apartments>()
     lateinit var apartmentsAdapter: ApartmentsAdapter
+    val firebaseStorage : FirebaseStorage = FirebaseStorage.getInstance()
+    val storageReference: StorageReference = firebaseStorage.reference
+
+
+    val imageNameList = ArrayList<String>()
 
     // Tạo một đối tượng FirebaseAuth
     val auth = FirebaseAuth.getInstance()
@@ -111,7 +119,16 @@ class MainActivity : AppCompatActivity() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val id = apartmentsAdapter.getApartmentId(viewHolder.adapterPosition)
                 reference.child(id).removeValue()
-                Toast.makeText(applicationContext,"The user was deleted",Toast.LENGTH_SHORT).show()
+
+                //delete()
+                val imageName = apartmentsAdapter.getImageName(viewHolder.adapterPosition)
+                val imageReference = storageReference.child("images").child(imageName)
+
+                imageReference.delete()
+
+
+
+                Toast.makeText(applicationContext,"The apartment was deleted",Toast.LENGTH_SHORT).show()
             }
 
         }).attachToRecyclerView(mainBinding.recylerView)
@@ -166,6 +183,7 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+    @SuppressLint("NotifyDataSetChanged")
     fun showDialogMessage(){
         val dialogMessage = AlertDialog.Builder(this)
         dialogMessage.setTitle("Xóa tất cả căn hộ")
@@ -175,8 +193,30 @@ class MainActivity : AppCompatActivity() {
         })
         dialogMessage.setPositiveButton("Yes", DialogInterface.OnClickListener{
             dialogMessage, i ->
+            reference.addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for(eachApartment in snapshot.children) {
+                        val apartment = eachApartment.getValue(Apartments::class.java)
+                        if (apartment != null) {
+                            imageNameList.add(apartment.imageName)
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+
+                val imageReference = storageReference.child("images")
+                imageReference.delete()
                 reference.removeValue().addOnCompleteListener{
                     task -> if(task.isSuccessful){
+                                for(imageName in imageNameList){
+                                    val imageReference = storageReference.child("images").child(imageName)
+                                    imageReference.delete()
+                                }
                                 apartmentsAdapter.notifyDataSetChanged()
                                 Toast.makeText(applicationContext,"Tất cả căn hộ đã bị xóa", Toast.LENGTH_SHORT).show()
                             }
