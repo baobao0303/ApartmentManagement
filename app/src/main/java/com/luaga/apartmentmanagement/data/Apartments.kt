@@ -13,7 +13,8 @@ data class Apartments(
     val gymService: Boolean = false,
     val laundryService: Boolean= false,
     val parkingService: Boolean= false,
-    val swimmingService: Boolean= false
+    val swimmingService: Boolean= false,
+    val url: String = ""
 ) {
 
 }

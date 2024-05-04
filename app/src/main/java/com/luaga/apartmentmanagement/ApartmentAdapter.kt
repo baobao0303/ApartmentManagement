@@ -3,10 +3,15 @@ package com.luaga.apartmentmanagement
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.luaga.apartmentmanagement.data.Apartments
 import com.luaga.apartmentmanagement.databinding.ApartmentsItemBinding
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
+import java.lang.Exception
 
 class ApartmentsAdapter(
     var context: Context,
@@ -26,18 +31,30 @@ class ApartmentsAdapter(
     }
 
     override fun onBindViewHolder(holder: ApartmentsViewHolder, position: Int) {
-        holder.adapterBinding.apartmentNumber.text = apartmentList[position].apartmentNumber
-        holder.adapterBinding.area.text = apartmentList[position].area.toString()
-        holder.adapterBinding.floor.text = apartmentList[position].floor.toString()
-        holder.adapterBinding.numberBedrooms.text = apartmentList[position].numBedrooms.toString()
-        holder.adapterBinding.numberBathrooms.text = apartmentList[position].numBathrooms.toString()
-        holder.adapterBinding.price.text = apartmentList[position].price.toString()
-        holder.adapterBinding.priceInternet.text = apartmentList[position].priceInternet.toString()
-        holder.adapterBinding.priceGarbage.text = apartmentList[position].priceGarbage.toString()
-        holder.adapterBinding.gymService.isChecked = apartmentList[position].gymService
-        holder.adapterBinding.laundryService.isChecked = apartmentList[position].laundryService
-        holder.adapterBinding.parkingService.isChecked = apartmentList[position].parkingService
-        holder.adapterBinding.swimmingService.isChecked = apartmentList[position].swimmingService
+        holder.adapterBinding.apartmentNumber.text = "Phòng: ${apartmentList[position].apartmentNumber}"
+//        holder.adapterBinding.area.text = apartmentList[position].area.toString()
+//        holder.adapterBinding.floor.text = apartmentList[position].floor.toString()
+//        holder.adapterBinding.numberBedrooms.text = apartmentList[position].numBedrooms.toString()
+//        holder.adapterBinding.numberBathrooms.text = apartmentList[position].numBathrooms.toString()
+//        holder.adapterBinding.price.text = apartmentList[position].price.toString()
+//        holder.adapterBinding.priceInternet.text = apartmentList[position].priceInternet.toString()
+//        holder.adapterBinding.priceGarbage.text = apartmentList[position].priceGarbage.toString()
+//        holder.adapterBinding.gymService.isChecked = apartmentList[position].gymService
+//        holder.adapterBinding.laundryService.isChecked = apartmentList[position].laundryService
+//        holder.adapterBinding.parkingService.isChecked = apartmentList[position].parkingService
+//        holder.adapterBinding.swimmingService.isChecked = apartmentList[position].swimmingService
+
+        val imagUrl = apartmentList[position].url
+        Picasso.get().load(imagUrl).into(holder.adapterBinding.imageView2, object : Callback{
+            override fun onSuccess() {
+                holder.adapterBinding.progressBar.visibility = View.INVISIBLE
+            }
+
+            override fun onError(e: Exception?) {
+                Toast.makeText(context, e?.localizedMessage,Toast.LENGTH_SHORT).show()
+            }
+        })
+
         holder.adapterBinding.linearLayout.setOnClickListener{
             val intent = Intent(context,UpdateApartmentActivity::class.java)
             intent.putExtra("id",apartmentList[position].apartmentId)
