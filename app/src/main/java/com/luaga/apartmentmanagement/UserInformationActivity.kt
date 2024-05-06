@@ -58,7 +58,7 @@ class UserInformationActivity : AppCompatActivity() {
         userInformationBinding.apartmentNumber.text = apartmentNumber
         userInformationBinding.area.text = "${convertToFormattedString(area.toInt())} (m^2)"
         userInformationBinding.floor.text = floor.toString()
-        userInformationBinding.price.text = "${convertToFormattedString(price.toInt())} VND"
+        userInformationBinding.priceNumber.text = "${convertToFormattedString(price.toInt())} VND"
         userInformationBinding.priceGarbage.text = "${convertToFormattedString(priceGarbage.toInt())} VND"
         userInformationBinding.priceInternet.text = "${convertToFormattedString(priceInternet.toInt())} VND"
         userInformationBinding.numBedrooms.text = numBedrooms.toString()
@@ -73,6 +73,10 @@ class UserInformationActivity : AppCompatActivity() {
         userInformationBinding.buttonBack.setOnClickListener{
             finish()
         }
+        userInformationBinding.showBill.setOnClickListener{
+            showBill()
+        }
+
     }
     fun convertToFormattedString(number: Int): String {
         val formattedNumber = StringBuilder(number.toString()).reverse()
@@ -98,7 +102,15 @@ class UserInformationActivity : AppCompatActivity() {
         intent.putExtra("apartmentNumber", apartmentNumber)
         intent.putExtra("area", area)
         intent.putExtra("floor", floor)
-        // Thêm các thông tin căn hộ khác tương tự ở đây
+        intent.putExtra("price",price)
+        intent.putExtra("priceGarbage", priceGarbage)
+        intent.putExtra("priceInternet", priceInternet)
+        intent.putExtra("numberBedrooms", numBedrooms)
+        intent.putExtra("numberBedrooms", numBathrooms)
+        intent.putExtra("gymService",gymService)
+        intent.putExtra("laundryService",laundryService)
+        intent.putExtra("parkingService",parkingService)
+        intent.putExtra("swimmingService",swimmingService)
 
         // Khởi động BillActivity với Intent đã cấu hình
         startActivity(intent)

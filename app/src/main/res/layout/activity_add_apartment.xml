@@ -134,7 +134,7 @@
                     android:id="@+id/addPriceGarbage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Giá tiền rác : "
+                    android:hint="Giá tiền rác + tiền Internet : "
                     android:inputType="number|numberDecimal" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -148,7 +148,7 @@
                     android:id="@+id/addPriceInternet"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Giá Internet : "
+                    android:hint="Giá điện : "
                     android:inputType="number|numberDecimal" />
 
             </com.google.android.material.textfield.TextInputLayout>

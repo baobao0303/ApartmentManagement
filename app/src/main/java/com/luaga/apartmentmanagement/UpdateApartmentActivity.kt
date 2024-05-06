@@ -52,6 +52,8 @@ class UpdateApartmentActivity : AppCompatActivity() {
         updateApartmentBinding.updateApartmentProfileImage.setOnClickListener{
             chooseImage()
         }
+
+
     }
     fun chooseImage(){
 

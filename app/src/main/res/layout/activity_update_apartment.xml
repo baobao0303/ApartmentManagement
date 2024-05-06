@@ -134,7 +134,7 @@
                     android:id="@+id/updatePriceGarbage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Giá tiền rác : "
+                    android:hint="Giá tiền rác + tiền Internet : "
                     android:inputType="number|numberDecimal" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -149,7 +149,7 @@
                     android:id="@+id/updatePriceInternet"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Giá Internet : "
+                    android:hint="Giá điện : "
                     android:inputType="number|numberDecimal" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -181,7 +181,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/updateNumBedrooms"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:hint="Số phòng ngủ : "
                         android:inputType="number|numberDecimal" />
                 </com.google.android.material.textfield.TextInputLayout>
