@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "640621454526",
+    "firebase_url": "https://apartmentmanagement-981e8-default-rtdb.firebaseio.com",
     "project_id": "apartmentmanagement-981e8",
     "storage_bucket": "apartmentmanagement-981e8.appspot.com"
   },
@@ -12,7 +13,12 @@
           "package_name": "com.luaga.apartmentmanagement"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "640621454526-rb0tsfr7105v538ab8augas56j3qu78a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDLDrGPNbrX4Xyjigb3YaIKGhdchuaUbEA"
@@ -20,7 +26,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "640621454526-rb0tsfr7105v538ab8augas56j3qu78a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
