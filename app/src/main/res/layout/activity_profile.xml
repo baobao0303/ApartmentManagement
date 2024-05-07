@@ -36,7 +36,6 @@
                 android:layout_height="36dp"
                 android:layout_marginBottom="5dp"
                 android:gravity="center"
-                android:text="James Martin"
                 android:textColor="@color/beige_500"
                 android:textSize="24sp"
                 android:textStyle="bold" />
@@ -91,7 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="james012@gmail.com" />
+                     />
             </LinearLayout>
         </LinearLayout>
         <View
@@ -140,7 +139,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="1234567891" />
+                     />
             </LinearLayout>
         </LinearLayout>
         <View
@@ -189,7 +188,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Ho Chi Minh city" />
+                     />
             </LinearLayout>
         </LinearLayout>
 
@@ -239,7 +238,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textSize="16sp"
-                    android:text="Anh Bao dep trai nhat nha" />
+                     />
             </LinearLayout>
         </LinearLayout>
 

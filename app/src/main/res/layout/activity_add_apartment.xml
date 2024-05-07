@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
     android:orientation="vertical">
 
     <ScrollView
@@ -30,9 +31,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
+                android:textAllCaps="true"
                 android:text="Thêm căn hộ mới"
                 android:textColor="@color/beige_700"
-                android:textSize="30sp"
+                android:textSize="28sp"
                 android:textStyle="bold" />
 
             <FrameLayout
@@ -148,7 +150,7 @@
                     android:id="@+id/addPriceInternet"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Giá điện : "
+                    android:hint="Số khối điện sử dụng : "
                     android:inputType="number|numberDecimal" />
 
             </com.google.android.material.textfield.TextInputLayout>

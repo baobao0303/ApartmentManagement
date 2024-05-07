@@ -5,12 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/green_300">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="5dp"
@@ -28,34 +32,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center"
+                android:textAllCaps="true"
                 android:text="Cập nhật căn hộ mới"
                 android:textColor="@color/beige_700"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-
-            <FrameLayout
-                android:layout_width="182dp"
-                android:layout_height="140dp"
-                android:background="@drawable/rounded_background_add">
-
-                <ImageView
-                    android:id="@+id/updateApartmentProfileImage"
-                    android:layout_width="175dp"
-                    android:layout_height="135dp"
-                    android:layout_gravity="center"
-                    app:srcCompat="@drawable/upload_2716051" />
-
-            </FrameLayout>
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="3dp"
-                android:text="Để chọn hình ảnh hồ sơ, hãy nhấp vào hình ảnh"
-                android:textColor="@color/beige_700"
+                android:textSize="28sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -97,8 +77,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:layout_marginTop="5dp"
-               >
+                android:layout_marginTop="5dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/updateArea"
@@ -112,8 +91,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:layout_marginTop="5dp"
-               >
+                android:layout_marginTop="5dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/updatePrice"
@@ -127,8 +105,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:layout_marginTop="5dp"
-               >
+                android:layout_marginTop="5dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/updatePriceGarbage"
@@ -142,14 +119,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="65dp"
-                android:layout_marginTop="5dp"
-                >
+                android:layout_marginTop="5dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/updatePriceInternet"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="Giá điện : "
+                    android:hint="Số khối điện đã sử dụng : "
                     android:inputType="number|numberDecimal" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -219,9 +195,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/addGymService"
-                        android:textStyle="bold"
                         android:textColor="@color/beige_700"
                         android:textSize="16sp"
+                        android:textStyle="bold"
                         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
                     <Switch
@@ -230,9 +206,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/addLaundryService"
-                        android:textStyle="bold"
-                        android:textSize="16sp"
                         android:textColor="@color/beige_700"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
                         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
                 </LinearLayout>
@@ -249,9 +225,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/addParkingService"
-                        android:textStyle="bold"
-                        android:textSize="16sp"
                         android:textColor="@color/beige_700"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
                         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
                     <Switch
@@ -260,9 +236,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="@string/addSwimmingService"
-                        android:textStyle="bold"
-                        android:textSize="16sp"
                         android:textColor="@color/beige_700"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
                         tools:ignore="UseSwitchCompatOrMaterialXml" />
 
                 </LinearLayout>

@@ -30,7 +30,7 @@ class BillActivity : AppCompatActivity() {
 
         billBinding.price.text = "${convertToFormattedString(price.toInt())} VND"
         billBinding.priceGarbage.text = "${convertToFormattedString(priceGarbage.toInt())} VND"
-        billBinding.priceInternet.text = "${convertToFormattedString(priceInternet.toInt())} VND"
+        billBinding.priceInternet.text = "${convertToFormattedString(priceInternet.toInt()* 3000)} VND"
         billBinding.monthlyBill.text = "${convertToFormattedString(monthlyBill.toInt())} VND"
 
         // Hiển thị dịch vụ Gym

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -12,21 +11,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="5dp">
 
 
         <Button
             android:id="@+id/buttonBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="24dp"
             android:text="Back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.052"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/textHeading"
             android:layout_width="match_parent"
@@ -296,7 +296,7 @@
                         android:id="@+id/textPriceInternet"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Giá tiền mạng: "
+                        android:text="Số khối điện :"
                         android:textColor="@color/beige_700"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -316,7 +316,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="1500000"
+                        android:text="90"
                         android:textColor="@color/beige_700"
                         android:textSize="14sp" />
 
@@ -409,13 +409,14 @@
             </LinearLayout>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
             android:background="@color/green_900"
             android:orientation="vertical"
             android:paddingLeft="5dp"
-            android:layout_marginTop="10dp"
             android:paddingTop="20dp"
             android:paddingRight="5dp"
             android:paddingBottom="20dp">
@@ -699,22 +700,23 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:textSize="12sp"
                 android:backgroundTint="@color/blue"
-                android:text="@string/buttonRenter" />
+                android:text="@string/buttonRenter"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
             android:background="@color/green_900"
             android:orientation="vertical"
             android:paddingLeft="5dp"
-            android:layout_marginTop="10dp"
             android:paddingTop="20dp"
             android:paddingRight="5dp"
             android:paddingBottom="20dp">
+
             <TextView
                 android:id="@+id/textsHeadingService"
                 android:layout_width="match_parent"
@@ -726,6 +728,7 @@
                 android:textColor="@color/beige_700"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -738,15 +741,16 @@
                     android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
+
                     <Switch
                         android:id="@+id/gymService"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Dịch vụ phòng gym"
                         android:textColor="@color/beige_700"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        android:text="Dịch vụ phòng gym"
-                        android:gravity="center"
                         tools:ignore="UseSwitchCompatOrMaterialXml" />
                 </LinearLayout>
 
@@ -761,14 +765,15 @@
                         android:id="@+id/laundryService"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Dịch vụ giặt ủi"
                         android:textColor="@color/beige_700"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        android:gravity="center"
-                        android:text="Dịch vụ giặt ủi"
                         tools:ignore="UseSwitchCompatOrMaterialXml" />
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -781,15 +786,16 @@
                     android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
+
                     <Switch
                         android:id="@+id/parkingService"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Dịch vụ đậu xe"
                         android:textColor="@color/beige_700"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        android:text="Dịch vụ đậu xe"
-                        android:gravity="center"
                         tools:ignore="UseSwitchCompatOrMaterialXml" />
                 </LinearLayout>
 
@@ -804,11 +810,11 @@
                         android:id="@+id/swimmingService"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Dịch vụ hồ bơi"
                         android:textColor="@color/beige_700"
                         android:textSize="14sp"
                         android:textStyle="bold"
-                        android:gravity="center"
-                        android:text="Dịch vụ hồ bơi"
                         tools:ignore="UseSwitchCompatOrMaterialXml" />
                 </LinearLayout>
             </LinearLayout>
@@ -819,13 +825,13 @@
 
         <Button
             android:id="@+id/showBill"
-            android:layout_marginTop="5dp"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
             android:backgroundTint="@color/blue"
-            android:textAllCaps="false"
-            android:text="In bill thanh toán hàng tháng" />
+            android:text="In bill thanh toán hàng tháng"
+            android:textAllCaps="false" />
     </LinearLayout>
 
 

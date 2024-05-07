@@ -3,12 +3,20 @@ package com.luaga.apartmentmanagement
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.luaga.apartmentmanagement.data.Renter
 import com.luaga.apartmentmanagement.databinding.ActivityUserInformationBinding
 import com.squareup.picasso.Picasso
 
@@ -28,7 +36,9 @@ class UserInformationActivity : AppCompatActivity() {
     private var swimmingService: Boolean = false
     private var url: String = ""
     private var imageName: String = ""
-
+    lateinit var reference: DatabaseReference
+    // Tạo một đối tượng FirebaseAuth
+    val auth = FirebaseAuth.getInstance()
     lateinit var  userInformationBinding: ActivityUserInformationBinding
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +48,7 @@ class UserInformationActivity : AppCompatActivity() {
         setContentView(view)
 
         // Lấy dữ liệu từ intent
+        var apartmentId = intent.getStringExtra("apartmentId").toString()
         apartmentNumber = intent.getStringExtra("apartmentNumber").toString()
         area = intent.getDoubleExtra("area", 0.0)
         floor = intent.getIntExtra("floor", 0)
@@ -60,7 +71,7 @@ class UserInformationActivity : AppCompatActivity() {
         userInformationBinding.floor.text = floor.toString()
         userInformationBinding.priceNumber.text = "${convertToFormattedString(price.toInt())} VND"
         userInformationBinding.priceGarbage.text = "${convertToFormattedString(priceGarbage.toInt())} VND"
-        userInformationBinding.priceInternet.text = "${convertToFormattedString(priceInternet.toInt())} VND"
+        userInformationBinding.priceInternet.text = "${convertToFormattedString(priceInternet.toInt())} khối"
         userInformationBinding.numBedrooms.text = numBedrooms.toString()
         userInformationBinding.numBathrooms.text = numBathrooms.toString()
         userInformationBinding.gymService.isChecked = gymService
@@ -76,7 +87,41 @@ class UserInformationActivity : AppCompatActivity() {
         userInformationBinding.showBill.setOnClickListener{
             showBill()
         }
+        userInformationBinding.buttonRenter.setOnClickListener{
+            val intent = Intent(this,EditUser::class.java)
+            intent.putExtra("apartmentId", apartmentId)
+            startActivity(intent)
+        }
+        // Kiểm tra xem người dùng đã đăng nhập hay chưa
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            // Người dùng đã đăng nhập, lấy User UID
+            val uid: String = currentUser.uid
+            println("User UID: $uid")
+            reference = FirebaseDatabase.getInstance().reference.child("users")
+                .child(uid)
+                .child("apartments").child(apartmentId).child("renter")
+        } else {
+            // Người dùng chưa đăng nhập
+            println("User chưa đăng nhập.")
+        }
+        reference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val renter = snapshot.getValue(Renter::class.java)
+                if (renter != null) {
+                    userInformationBinding.renterName.text = renter.username
+                    userInformationBinding.address.text = renter.address
+                    userInformationBinding.cardNumber.text = renter.cardNumber
+                    userInformationBinding.phone.text = renter.phone
+                    userInformationBinding.date.text = renter.date
+                    userInformationBinding.expirationDate.text = renter.exDate
+                }
+            }
 
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
     }
     fun convertToFormattedString(number: Int): String {
         val formattedNumber = StringBuilder(number.toString()).reverse()
@@ -106,7 +151,7 @@ class UserInformationActivity : AppCompatActivity() {
         intent.putExtra("priceGarbage", priceGarbage)
         intent.putExtra("priceInternet", priceInternet)
         intent.putExtra("numberBedrooms", numBedrooms)
-        intent.putExtra("numberBedrooms", numBathrooms)
+        intent.putExtra("numberBathrooms", numBathrooms)
         intent.putExtra("gymService",gymService)
         intent.putExtra("laundryService",laundryService)
         intent.putExtra("parkingService",parkingService)

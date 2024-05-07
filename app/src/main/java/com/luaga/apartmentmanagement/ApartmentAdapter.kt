@@ -77,6 +77,7 @@ class ApartmentsAdapter(
         // Trình nghe sự kiện cho nút "Thông tin người thuê"
         holder.adapterBinding.button.setOnClickListener {
             val intent = Intent(context, UserInformationActivity::class.java)
+            intent.putExtra("apartmentId",apartmentList[position].apartmentId)
             intent.putExtra("apartmentNumber", apartmentList[position].apartmentNumber)
             intent.putExtra("area", apartmentList[position].area)
             intent.putExtra("floor", apartmentList[position].floor)

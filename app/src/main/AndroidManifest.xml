@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
@@ -18,9 +19,17 @@
         android:theme="@style/Theme.ApartmentManagement"
         tools:targetApi="31">
         <activity
-            android:name=".BillActivity"
+            android:name=".EditProfileActivity"
             android:exported="false"
             android:theme="@style/AppThemeSplash"/>
+        <activity
+            android:name=".EditUser"
+            android:exported="false"
+            android:theme="@style/AppThemeSplash" />
+        <activity
+            android:name=".BillActivity"
+            android:exported="false"
+            android:theme="@style/AppThemeSplash" />
         <activity
             android:name=".UserInformationActivity"
             android:exported="false"
@@ -32,7 +41,7 @@
         <activity
             android:name=".UpdateApartmentActivity"
             android:exported="false"
-            android:theme="@style/AppThemeSplash"/>
+            android:theme="@style/AppThemeSplash" />
         <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false"
@@ -44,7 +53,7 @@
         <activity
             android:name=".ProfileActivity"
             android:exported="false"
-            android:theme="@style/AppThemeSplash"/>
+            android:theme="@style/AppThemeSplash" />
         <activity
             android:name=".SettingActivity"
             android:exported="false" />

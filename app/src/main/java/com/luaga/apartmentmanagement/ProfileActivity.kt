@@ -75,25 +75,41 @@ class ProfileActivity : AppCompatActivity() {
             println("User UID1: $uid")
             reference = FirebaseDatabase.getInstance().reference.child("users")
                 .child(uid)
-            reference.addValueEventListener(object : ValueEventListener{
+            reference.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val userName: String = snapshot.child("username").value as String
                     val email: String = snapshot.child("email").value as String
                     val phone: String = snapshot.child("phone").value as String
+                    val address: String = if (snapshot.hasChild("address")) {
+                        snapshot.child("address").value as String
+                    } else {
+                        "trống"
+                    }
+                    val facebook: String = if (snapshot.hasChild("facebook")) {
+                        snapshot.child("facebook").value as String
+                    } else {
+                        "trống"
+                    }
                     profileBinding.textUsername.text = userName
                     profileBinding.textEmail.text = email
                     profileBinding.textPhone.text = phone
-                    profileBinding.textFacebook.text = ""
-                }
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
+                    profileBinding.textFacebook.text = facebook
+                    profileBinding.textAddress.text = address
                 }
 
+                override fun onCancelled(error: DatabaseError) {
+                    // Xử lý khi có lỗi
+                }
             })
+
 
         } else {
             // Người dùng chưa đăng nhập
             println("User chưa đăng nhập.")
+        }
+        profileBinding.buttonEdit.setOnClickListener{
+            val intent = Intent(this, EditProfileActivity::class.java)
+            startActivity(intent)
         }
 
     }
