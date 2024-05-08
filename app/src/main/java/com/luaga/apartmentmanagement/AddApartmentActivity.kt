@@ -6,7 +6,6 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
@@ -43,8 +42,7 @@ class AddApartmentActivity : AppCompatActivity() {
         //  Regiter
         registerActivityForResult()
         addApartmentBinding.buttonAddItem.setOnClickListener {
-            if (imageUri == null) { // Kiểm tra xem người dùng đã chọn hình ảnh hay chưa
-                // Hiển thị hộp thoại cảnh báo nếu không có hình ảnh
+            if (imageUri == null) {
                 AlertDialog.Builder(this)
                     .setTitle("Lỗi")
                     .setMessage("Vui lòng chọn hình ảnh trước khi lưu.")
